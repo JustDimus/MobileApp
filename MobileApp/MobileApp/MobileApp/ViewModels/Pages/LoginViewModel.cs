@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
 
 namespace MobileApp.ViewModels.Pages
 {
-    public class LoginPageViewModel : BasePageViewModel
+    public class LoginViewModel : BasePageViewModel
     {
         #region Texts
         public string HeaderText { get; } = Localization.TextTempalate;
@@ -15,9 +16,14 @@ namespace MobileApp.ViewModels.Pages
         public string RegistrationButtonText { get; } = Localization.TextTempalate;
         #endregion
 
-        public LoginPageViewModel()
+        public LoginViewModel()
         {
-
+            
         }
+
+        public Command LoginCommand { get; }
+        public Command GoToRegistrationCommand { get; }
+
+
     }
 }

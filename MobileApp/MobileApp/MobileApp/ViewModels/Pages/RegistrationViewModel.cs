@@ -5,7 +5,7 @@ using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
 
 namespace MobileApp.ViewModels.Pages
 {
-    public class RegistrationPageViewModel : BasePageViewModel
+    public class RegistrationViewModel : BasePageViewModel
     {
         #region Texts
         public string HeaderText { get; } = Localization.TextTempalate;
@@ -15,7 +15,7 @@ namespace MobileApp.ViewModels.Pages
         public string LoginButtonText { get; } = Localization.TextTempalate;
         #endregion
 
-        public RegistrationPageViewModel()
+        public RegistrationViewModel()
         {
 
         }
