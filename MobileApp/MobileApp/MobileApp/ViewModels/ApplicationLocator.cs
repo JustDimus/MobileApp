@@ -1,9 +1,15 @@
 ﻿using MobileApp.Configurations;
+using MobileApp.Library.DataManagement.Authorization;
+using MobileApp.Library.DataManagement.Authorization.Implementation;
+using MobileApp.Library.DataManagement.RequestManagement;
+using MobileApp.Library.DataManagement.RequestManagement.Implementation;
 using MobileApp.Library.Network.NetworkConnection;
 using MobileApp.Library.Network.NetworkConnection.Implementation;
 using MobileApp.Library.Network.NeworkCommunication;
 using MobileApp.Library.Network.NeworkCommunication.Configuration;
 using MobileApp.Library.Network.NeworkCommunication.Implementation;
+using MobileApp.Services.Navigation;
+using MobileApp.Services.Navigation.Implementation;
 using MobileApp.ViewModels.Pages;
 using Nancy.TinyIoc;
 using System;
@@ -19,13 +25,16 @@ namespace MobileApp.ViewModels
         public ApplicationLocator()
         {
             container.Register<NetworkConfigurationManager, MobileAppNetworkConfigurationManager>();
+            container.Register<IRequestManager, NetworkRequestManager>().AsSingleton();
+            container.Register<INavigationService, NavigationService>().AsSingleton();
 #if STUB
             container.Register<INetworkConnectionService, StubNetworkConnectionService>().AsSingleton();
-            container.Register<INetworkCommunicationService, StubNetworkCommunicationService>();
+            container.Register<INetworkCommunicationService, StubNetworkCommunicationService>().AsSingleton();
+            container.Register<IAuthorizationService, StubAuthorizationService>().AsSingleton();
 #else
             container.Register<INetworkConnectionService, NetworkConnectionService>().AsSingleton();
             container.Register<INetworkCommunicationService, NetworkCommunicationService>().AsSingleton();
-
+            container.Register<IAuthorizationService, AuthorizationService>().AsSingleton();
 #endif
             container.Register<LoginViewModel>().AsSingleton();
             container.Register<RegistrationViewModel>().AsSingleton();

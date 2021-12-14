@@ -89,8 +89,9 @@ namespace MobileApp.Library.DataManagement.Authorization.Implementation
             if (authorizationStatus != this.lastAuthorizationStatus)
             {
                 this.previousAuthorizationRequest = authorizationRequest;
-                this.authorizationStatusSubject.OnNext(authorizationStatus);
             }
+
+            this.authorizationStatusSubject.OnNext(authorizationStatus);
 
             if (result)
             {

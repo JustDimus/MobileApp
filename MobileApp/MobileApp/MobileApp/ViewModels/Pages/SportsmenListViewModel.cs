@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MobileApp.Library.DataManagement.Authorization;
+using MobileApp.Library.Network.NetworkConnection;
+using MobileApp.Services.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
@@ -20,8 +23,13 @@ namespace MobileApp.ViewModels.Pages
         public string SexText { get; } = Localization.TextTempalate;
         #endregion
 
-        public SportsmenListViewModel()
+        private readonly INavigationService _navigationService;
+
+        internal SportsmenListViewModel(
+            INavigationService navigationService)
         {
+            this._navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
+
 
         }
     }
