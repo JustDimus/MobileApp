@@ -21,7 +21,7 @@ namespace MobileApp.ViewModels.Pages
 
         public RelativeInfoViewModel()
         {
-
+            
         }
     }
 }

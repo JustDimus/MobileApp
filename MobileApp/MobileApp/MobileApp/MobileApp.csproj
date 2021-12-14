@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MobileApp.Network\MobileApp.Network.csproj" />
+    <ProjectReference Include="..\..\MobileApp.Network\MobileApp.Library.Network.csproj" />
   </ItemGroup>
 
   <ItemGroup>

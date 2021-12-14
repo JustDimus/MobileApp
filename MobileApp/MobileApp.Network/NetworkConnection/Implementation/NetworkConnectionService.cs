@@ -4,7 +4,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using Xamarin.Essentials;
 
-namespace MobileApp.Network.NetworkConnection.Implementation
+namespace MobileApp.Library.Network.NetworkConnection.Implementation
 {
     public class NetworkConnectionService : INetworkConnectionService
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Text;
 
-namespace MobileApp.Network.NetworkConnection
+namespace MobileApp.Library.Network.NetworkConnection
 {
     public class StubNetworkConnectionService : INetworkConnectionService
     {

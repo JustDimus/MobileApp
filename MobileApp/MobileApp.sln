@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Android", "MobileApp\MobileApp.Android\MobileApp.Android.csproj", "{6133652E-48D9-48F2-98D5-9A7408270A50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp", "MobileApp\MobileApp\MobileApp.csproj", "{E2DF81D3-E217-4FBE-A594-1E013FD1D112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Network", "MobileApp.Network\MobileApp.Network.csproj", "{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp.Library.Network", "MobileApp.Network\MobileApp.Library.Network.csproj", "{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Library.DataManagement", "MobileApp.Library.DataManagement\MobileApp.Library.DataManagement.csproj", "{A2057413-B00C-4CD8-805A-7E70470A47D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2057413-B00C-4CD8-805A-7E70470A47D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

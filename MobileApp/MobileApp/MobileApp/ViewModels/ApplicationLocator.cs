@@ -1,5 +1,9 @@
-﻿using MobileApp.Network.NetworkConnection;
-using MobileApp.Network.NetworkConnection.Implementation;
+﻿using MobileApp.Configurations;
+using MobileApp.Library.Network.NetworkConnection;
+using MobileApp.Library.Network.NetworkConnection.Implementation;
+using MobileApp.Library.Network.NeworkCommunication;
+using MobileApp.Library.Network.NeworkCommunication.Configuration;
+using MobileApp.Library.Network.NeworkCommunication.Implementation;
 using MobileApp.ViewModels.Pages;
 using Nancy.TinyIoc;
 using System;
@@ -14,10 +18,13 @@ namespace MobileApp.ViewModels
 
         public ApplicationLocator()
         {
+            container.Register<NetworkConfigurationManager, MobileAppNetworkConfigurationManager>();
 #if STUB
             container.Register<INetworkConnectionService, StubNetworkConnectionService>().AsSingleton();
+            container.Register<INetworkCommunicationService, StubNetworkCommunicationService>();
 #else
             container.Register<INetworkConnectionService, NetworkConnectionService>().AsSingleton();
+            container.Register<INetworkCommunicationService, NetworkCommunicationService>().AsSingleton();
 
 #endif
             container.Register<LoginViewModel>().AsSingleton();
