@@ -8,18 +8,18 @@ namespace MobileApp.Services.Sportsmen
 {
     internal class StubSportsmenService : ISportsmenService
     {
-        public Task<DataRequest<List<SportsmentData>>> GetSportsmenList()
+        public Task<DataRequest<List<AccountData>>> GetSportsmenListAsync()
         {
-            return Task.FromResult(new DataRequest<List<SportsmentData>>()
+            return Task.FromResult(new DataRequest<List<AccountData>>()
             {
                 IsSuccessful = true,
-                Result = new List<SportsmentData>()
+                Result = new List<AccountData>()
                 {
-                    new SportsmentData()
+                    new AccountData()
                     {
 
                     },
-                    new SportsmentData()
+                    new AccountData()
                     {
 
                     }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MobileApp.Services.Models
 {
-    public class SportsmentData
+    public class AccountData
     {
         [JsonProperty("Id")]
         public string Id { get; set; }

@@ -8,6 +8,6 @@ namespace MobileApp.Services.Sportsmen
 {
     internal interface ISportsmenService
     {
-        Task<DataRequest<List<SportsmentData>>> GetSportsmenList();
+        Task<DataRequest<List<AccountData>>> GetSportsmenListAsync();
     }
 }
