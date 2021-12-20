@@ -5,13 +5,14 @@ using MobileApp.Services.Navigation;
 using MobileApp.Services.Sportsmen;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
 
 namespace MobileApp.ViewModels.Pages
 {
-    public class SportsmenInfoViewModel : BasePageViewModel
+    public class AccountInfoViewModel : BasePageViewModel
     {
         #region Texts
         public string HeaderText { get; } = Localization.TextTempalate;
@@ -35,12 +36,15 @@ namespace MobileApp.ViewModels.Pages
         private bool refreshCompleted = false;
         private bool isAthlet = false;
         private bool isReadonly = false;
+        private bool isAthletDataLoadingCompleted = false;
         private AccountData loadedAccountData;
+        private List<NutritionData> loadedNutritionData;
+        private List<BodyData> loadedBodyData;
 
         private IDisposable authorizationStatusDisposable;
         private Task pageReloadingTask;
 
-        internal SportsmenInfoViewModel(
+        internal AccountInfoViewModel(
             IAuthorizationService authorizationService,
             IAccountService accountService,
             ISportsmenService sportsmenService,
@@ -93,6 +97,16 @@ namespace MobileApp.ViewModels.Pages
                 this.OnPropertyChanged();
             }
         }
+
+        public bool AthletDataLoadingStatus
+        {
+            get => this.isAthletDataLoadingCompleted;
+            set
+            {
+                this.isAthletDataLoadingCompleted = value;
+                this.OnPropertyChanged();
+            }
+        }
         #endregion
 
         protected override void OnPageLoaded()
@@ -116,7 +130,7 @@ namespace MobileApp.ViewModels.Pages
         {
             var currentUserRole = await this._accountService.GetUserRoleAsync();
 
-            if (currentUserRole && currentUserRole.Result != null && currentUserRole.Result.Any())
+            if (currentUserRole.IsSuccessful && currentUserRole.Result != null && currentUserRole.Result.Any())
             {
                 var userRole = (UserRoles)currentUserRole.Result.First();
 
@@ -138,7 +152,7 @@ namespace MobileApp.ViewModels.Pages
                         }
                         else
                         {
-                            await this.LoadBaseAccountInfoAsync(selectedAccount);
+                            this.LoadBaseAccountInfoAsync(selectedAccount);
                             await this.LoadSpotsmenInfoAsync(selectedAccount);
                         }    
                         break;
@@ -158,7 +172,7 @@ namespace MobileApp.ViewModels.Pages
 
             if (accountData.IsSuccessful)
             {
-                await this.LoadBaseAccountInfoAsync(accountData.Result);
+                this.LoadBaseAccountInfoAsync(accountData.Result);
             }
             else
             {
@@ -166,7 +180,7 @@ namespace MobileApp.ViewModels.Pages
             }
         }
         
-        private async Task LoadBaseAccountInfoAsync(AccountData accountData)
+        private void LoadBaseAccountInfoAsync(AccountData accountData)
         {
             if (accountData == null)
             {
@@ -178,7 +192,26 @@ namespace MobileApp.ViewModels.Pages
 
         private async Task LoadSpotsmenInfoAsync(AccountData accountData)
         {
-            var sportsmenData = this._sportsmenService.
+            var accountBodyData = await this._sportsmenService.GetBodyDataListAsync(accountData);
+            var accountNutritionData = await this._sportsmenService.GetNutritionDataListAsync(accountData);
+
+            this.AthletDataLoadingStatus = accountBodyData.IsSuccessful && accountNutritionData.IsSuccessful;
+
+            if (this.AthletDataLoadingStatus)
+            {
+                this.loadedBodyData = accountBodyData.Result;
+                this.loadedNutritionData = accountNutritionData.Result;
+            }
+        }
+
+        private async Task RefreshGraphics()
+        {
+
+        }
+
+        private async Task ClearGraphics()
+        {
+
         }
 
         private void MoveToLoginPage()

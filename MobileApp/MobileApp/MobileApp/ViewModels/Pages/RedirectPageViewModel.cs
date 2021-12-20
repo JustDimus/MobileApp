@@ -40,7 +40,7 @@ namespace MobileApp.ViewModels.Pages
                 switch (role)
                 {
                     case Services.Models.UserRoles.Athlet:
-                        this._navigationService.MoveToPage(Services.Navigation.Pages.SportsmenInfo);
+                        this._navigationService.MoveToPage(Services.Navigation.Pages.AccountInfo);
                         break;
                     case Services.Models.UserRoles.Coach:
                     case Services.Models.UserRoles.Relative:

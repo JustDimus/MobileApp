@@ -8,8 +8,7 @@ namespace MobileApp.Services.Navigation
     {
         Login,
         Registration,
-        RelativeInfo,
-        SportsmenInfo,
-        SpotsmenList
+        SpotsmenList,
+        AccountInfo
     }
 }

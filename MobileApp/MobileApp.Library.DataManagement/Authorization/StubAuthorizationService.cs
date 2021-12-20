@@ -23,9 +23,9 @@ namespace MobileApp.Library.DataManagement.Authorization
             return Task.FromResult(DEFAULT_AUTHORIZATION_STATUS);
         }
 
-        public Task<string> GetLastUsedToken()
+        public string GetLastUsedToken()
         {
-            return Task.FromResult<string>(null);
+            return null;
         }
 
         public Task<string> UpdateToken()

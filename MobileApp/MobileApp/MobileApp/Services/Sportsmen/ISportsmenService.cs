@@ -16,6 +16,8 @@ namespace MobileApp.Services.Sportsmen
 
         Task<DataRequest<List<AccountData>>> GetSportsmenListAsync();
 
-        Task<DataRequest<>>
+        Task<DataRequest<List<NutritionData>>> GetNutritionDataListAsync(AccountData account);
+
+        Task<DataRequest<List<BodyData>>> GetBodyDataListAsync(AccountData account);
     }
 }

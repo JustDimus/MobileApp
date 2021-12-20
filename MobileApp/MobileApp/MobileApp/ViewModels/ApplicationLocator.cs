@@ -8,8 +8,10 @@ using MobileApp.Library.Network.NetworkConnection.Implementation;
 using MobileApp.Library.Network.NeworkCommunication;
 using MobileApp.Library.Network.NeworkCommunication.Configuration;
 using MobileApp.Library.Network.NeworkCommunication.Implementation;
+using MobileApp.Services.Account;
 using MobileApp.Services.Navigation;
 using MobileApp.Services.Navigation.Implementation;
+using MobileApp.Services.Sportsmen;
 using MobileApp.ViewModels.Pages;
 using Nancy.TinyIoc;
 using System;
@@ -31,11 +33,14 @@ namespace MobileApp.ViewModels
             container.Register<INetworkConnectionService, StubNetworkConnectionService>().AsSingleton();
             container.Register<INetworkCommunicationService, StubNetworkCommunicationService>().AsSingleton();
             container.Register<IAuthorizationService, StubAuthorizationService>().AsSingleton();
+            container.Register<IAccountService, StubAccountService>().AsSingleton();
+            container.Register<ISportsmenService, StubSportsmenService>().AsSingleton();
 #else
             container.Register<INetworkConnectionService, NetworkConnectionService>().AsSingleton();
             container.Register<INetworkCommunicationService, NetworkCommunicationService>().AsSingleton();
             container.Register<IAuthorizationService, AuthorizationService>().AsSingleton();
 #endif
+            container.Register<MainViewModel>().AsSingleton();
             container.Register<LoginViewModel>().AsSingleton();
             container.Register<RegistrationViewModel>().AsSingleton();
             container.Register<RelativeInfoViewModel>().AsSingleton();
@@ -49,8 +54,10 @@ namespace MobileApp.ViewModels
 
         public RelativeInfoViewModel RelativePageViewPageModel { get; }
 
-        public AccountInfoViewModel SportsmenInfoPageViewModel { get; }
+        public AccountInfoViewModel AccountInfoPageViewModel { get; }
 
         public SportsmenListViewModel SportsmenListPageViewModel { get; }
+
+        public MainViewModel MainPageViewModel { get; }
     }
 }
