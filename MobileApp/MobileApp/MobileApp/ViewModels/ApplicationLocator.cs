@@ -39,7 +39,7 @@ namespace MobileApp.ViewModels
             container.Register<LoginViewModel>().AsSingleton();
             container.Register<RegistrationViewModel>().AsSingleton();
             container.Register<RelativeInfoViewModel>().AsSingleton();
-            container.Register<SportsmenInfoViewModel>().AsSingleton();
+            container.Register<AccountInfoViewModel>().AsSingleton();
             container.Register<SportsmenListViewModel>().AsSingleton();
         }
 
@@ -49,7 +49,7 @@ namespace MobileApp.ViewModels
 
         public RelativeInfoViewModel RelativePageViewPageModel { get; }
 
-        public SportsmenInfoViewModel SportsmenInfoPageViewModel { get; }
+        public AccountInfoViewModel SportsmenInfoPageViewModel { get; }
 
         public SportsmenListViewModel SportsmenListPageViewModel { get; }
     }

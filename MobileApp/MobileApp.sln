@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp", "MobileApp\Mobi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp.Library.Network", "MobileApp.Network\MobileApp.Library.Network.csproj", "{4BC73A99-D7B2-4FDE-AC7F-C5FB9A335CB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Library.DataManagement", "MobileApp.Library.DataManagement\MobileApp.Library.DataManagement.csproj", "{A2057413-B00C-4CD8-805A-7E70470A47D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp.Library.DataManagement", "MobileApp.Library.DataManagement\MobileApp.Library.DataManagement.csproj", "{A2057413-B00C-4CD8-805A-7E70470A47D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
