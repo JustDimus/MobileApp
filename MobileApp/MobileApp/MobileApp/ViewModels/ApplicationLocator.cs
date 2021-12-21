@@ -9,6 +9,7 @@ using MobileApp.Library.Network.NeworkCommunication;
 using MobileApp.Library.Network.NeworkCommunication.Configuration;
 using MobileApp.Library.Network.NeworkCommunication.Implementation;
 using MobileApp.Services.Account;
+using MobileApp.Services.Account.Implementation;
 using MobileApp.Services.Navigation;
 using MobileApp.Services.Navigation.Implementation;
 using MobileApp.Services.Sportsmen;
@@ -39,6 +40,7 @@ namespace MobileApp.ViewModels
             container.Register<INetworkConnectionService, NetworkConnectionService>().AsSingleton();
             container.Register<INetworkCommunicationService, NetworkCommunicationService>().AsSingleton();
             container.Register<IAuthorizationService, AuthorizationService>().AsSingleton();
+            container.Register<IAccountService, AccountService>().AsSingleton();
 #endif
             container.Register<MainViewModel>().AsSingleton();
             container.Register<LoginViewModel>().AsSingleton();

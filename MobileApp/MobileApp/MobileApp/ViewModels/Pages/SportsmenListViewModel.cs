@@ -16,17 +16,17 @@ namespace MobileApp.ViewModels.Pages
     public class SportsmenListViewModel : BasePageViewModel
     {
         #region Texts
-        public string HeaderText { get; } = Localization.TextTempalate;
-        public string AddSportsmenButtonText { get; } = Localization.TextTempalate;
-        public string DeleteSportsmenButtonText { get; } = Localization.TextTempalate;
-        public string SportsmenHeaderText { get; } = Localization.TextTempalate;
-        public string LoginButtonText { get; } = Localization.TextTempalate;
-        public string NameText { get; } = Localization.TextTempalate;
-        public string PhoneText { get; } = Localization.TextTempalate;
-        public string EmailText { get; } = Localization.TextTempalate;
-        public string BirthdayText { get; } = Localization.TextTempalate;
-        public string SexText { get; } = Localization.TextTempalate;
-        public string RefreshDataError { get; } = Localization.TextTempalate;
+        public string HeaderText { get; } = Localization.SportsmenList_HeaderText;
+        public string AddSportsmenButtonText { get; } = Localization.SportsmenList_AddSportsmenButtonText;
+        public string DeleteSportsmenButtonText { get; } = Localization.SportsmenList_DeleteSportsmenButtonText;
+        public string SportsmenHeaderText { get; } = Localization.SportsmenList_SportsmenHeaderText;
+        public string LoginButtonText { get; } = Localization.SportsmenList_LoginButtonText;
+        public string NameText { get; } = Localization.SportsmenList_NameText;
+        public string PhoneText { get; } = Localization.SportsmenList_PhoneText;
+        public string EmailText { get; } = Localization.SportsmenList_EmailText;
+        public string BirthdayText { get; } = Localization.SportsmenList_BirthdayText;
+        public string SexText { get; } = Localization.SportsmenList_SexText;
+        public string RefreshDataError { get; } = Localization.SportsmenList_RefreshDataError;
         #endregion
 
         private readonly INavigationService _navigationService;
@@ -107,12 +107,12 @@ namespace MobileApp.ViewModels.Pages
 
             if (sportsmenListResult.IsSuccessful)
             {
-                this.DataReloadStatus = false;
+                this.DataReloadStatus = true;
                 this.SportsmenDataList = sportsmenListResult.Result;
             }
             else
             {
-                this.DataReloadStatus = true;
+                this.DataReloadStatus = false;
             }
         }
 

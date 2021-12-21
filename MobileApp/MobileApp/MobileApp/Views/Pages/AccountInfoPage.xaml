@@ -53,8 +53,8 @@
             <StackLayout Grid.Row="1"
                          HorizontalOptions="FillAndExpand"
                          Orientation="Horizontal">
-                <ImageButton Source="list_icon.png" Command="{Binding GoToSportsmenListCommand}"/>
-                <ImageButton Source="profile_icon.png" />
+                <ImageButton Source="list_icon.png" Command="{Binding GoToSportsmenListCommand}" HorizontalOptions="StartAndExpand"/>
+                <ImageButton Source="profile_icon.png" HorizontalOptions="EndAndExpand" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

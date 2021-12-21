@@ -16,18 +16,18 @@ namespace MobileApp.ViewModels.Pages
     public class AccountInfoViewModel : BasePageViewModel
     {
         #region Texts
-        public string HeaderText { get; } = Localization.TextTempalate;
-        public string NameText { get; } = Localization.TextTempalate;
-        public string PhoneText { get; } = Localization.TextTempalate;
-        public string EmailText { get; } = Localization.TextTempalate;
-        public string BirthdayText { get; } = Localization.TextTempalate;
-        public string SexText { get; } = Localization.TextTempalate;
-        public string NutritionText { get; } = Localization.TextTempalate;
-        public string BodyText { get; } = Localization.TextTempalate;
-        public string GroupsText { get; } = Localization.TextTempalate;
-        public string ErrorText { get; } = Localization.TextTempalate;
-        public string SaveChangesButtonText { get; } = Localization.TextTempalate;
-        public string ChangePasswordButtonText { get; } = Localization.TextTempalate;
+        public string HeaderText { get; } = Localization.AccountInfo_HeaderText;
+        public string NameText { get; } = Localization.AccountInfo_NameText;
+        public string PhoneText { get; } = Localization.AccountInfo_PhoneText;
+        public string EmailText { get; } = Localization.AccountInfo_EmailText;
+        public string BirthdayText { get; } = Localization.AccountInfo_BirthdayText;
+        public string SexText { get; } = Localization.AccountInfo_SexText;
+        public string NutritionText { get; } = Localization.AccountInfo_NutritionText;
+        public string BodyText { get; } = Localization.AccountInfo_BodyText;
+        public string GroupsText { get; } = Localization.AccountInfo_GroupsInfo;
+        public string ErrorText { get; } = Localization.AccountInfo_ErrorText;
+        public string SaveChangesButtonText { get; } = Localization.AccountInfo_SaveChangesButtonText;
+        public string ChangePasswordButtonText { get; } = Localization.AccountInfo_ChangePasswordButtonText;
         #endregion
 
         private IAuthorizationService _authorizationService;
@@ -76,6 +76,7 @@ namespace MobileApp.ViewModels.Pages
             private set
             {
                 this.loadedAccountData = value;
+                this.OnPropertyChanged();
             }
         }
 
@@ -122,13 +123,10 @@ namespace MobileApp.ViewModels.Pages
 
         protected override void OnPageLoaded()
         {
+            this.ClearPageData();
             this.pageReloadingTask = ReloadPageDataAsync();
         }
 
-        protected override void OnPageUnloaded()
-        {
-            this.ClearPageData();
-        }
 
         private void ClearPageData()
         {
@@ -143,7 +141,7 @@ namespace MobileApp.ViewModels.Pages
 
             if (currentUserRole.IsSuccessful && currentUserRole.Result != null && currentUserRole.Result.Any())
             {
-                var userRole = (UserRoles)currentUserRole.Result.First();
+                var userRole = currentUserRole.Result.First();
 
                 switch(userRole)
                 {
@@ -151,7 +149,7 @@ namespace MobileApp.ViewModels.Pages
                         await this.LoadBaseAccountInfoAsync();
 
                         var currentAccount = await this._accountService.GetAccountDataAsync();
-                        await this.LoadSpotsmenInfoAsync(currentAccount.Result);
+                        await this.LoadSportsmenInfoAsync(currentAccount.Result);
                         break;
                     case UserRoles.Relative:
                     case UserRoles.Coach:
@@ -164,7 +162,7 @@ namespace MobileApp.ViewModels.Pages
                         else
                         {
                             this.LoadBaseAccountInfoAsync(selectedAccount);
-                            await this.LoadSpotsmenInfoAsync(selectedAccount);
+                            await this.LoadSportsmenInfoAsync(selectedAccount);
                         }    
                         break;
                 }
@@ -206,7 +204,7 @@ namespace MobileApp.ViewModels.Pages
             this.CurrentAccount = accountData;
         }
 
-        private async Task LoadSpotsmenInfoAsync(AccountData accountData)
+        private async Task LoadSportsmenInfoAsync(AccountData accountData)
         {
             var accountBodyData = await this._sportsmenService.GetBodyDataListAsync(accountData);
             var accountNutritionData = await this._sportsmenService.GetNutritionDataListAsync(accountData);

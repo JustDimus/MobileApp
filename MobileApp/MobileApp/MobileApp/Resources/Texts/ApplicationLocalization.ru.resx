@@ -117,6 +117,108 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountInfo_BirthdayText" xml:space="preserve">
+    <value>День рождения</value>
+  </data>
+  <data name="AccountInfo_BodyText" xml:space="preserve">
+    <value>Тело</value>
+  </data>
+  <data name="AccountInfo_ChangePasswordButtonText" xml:space="preserve">
+    <value>Сменить пароль</value>
+  </data>
+  <data name="AccountInfo_EmailText" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="AccountInfo_ErrorText" xml:space="preserve">
+    <value>Ошибка загрузки</value>
+  </data>
+  <data name="AccountInfo_GroupsInfo" xml:space="preserve">
+    <value>Группы</value>
+  </data>
+  <data name="AccountInfo_HeaderText" xml:space="preserve">
+    <value>Аккаунт</value>
+  </data>
+  <data name="AccountInfo_NameText" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="AccountInfo_NutritionText" xml:space="preserve">
+    <value>Потребление</value>
+  </data>
+  <data name="AccountInfo_PhoneText" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="AccountInfo_SaveChangesButtonText" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="AccountInfo_SexText" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="Login_ErrorText" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Login_HeaderText" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Login_LoginButtonText" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Login_LoginTemplateText" xml:space="preserve">
+    <value>логин</value>
+  </data>
+  <data name="Login_PasswordTemplateText" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Login_RegistrationButtonText" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Registration_HeaderText" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Registration_LoginButtonText" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Registration_LoginTemplateText" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Registration_PasswordTemplateText" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Registration_RegistrationButtonText" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="SportsmenList_AddSportsmenButtonText" xml:space="preserve">
+    <value>Добавить спортсмена</value>
+  </data>
+  <data name="SportsmenList_BirthdayText" xml:space="preserve">
+    <value>День рождения</value>
+  </data>
+  <data name="SportsmenList_DeleteSportsmenButtonText" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="SportsmenList_EmailText" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="SportsmenList_HeaderText" xml:space="preserve">
+    <value>Спортсмены</value>
+  </data>
+  <data name="SportsmenList_LoginButtonText" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="SportsmenList_NameText" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="SportsmenList_PhoneText" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="SportsmenList_RefreshDataError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="SportsmenList_SexText" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="SportsmenList_SportsmenHeaderText" xml:space="preserve">
+    <value>Спортсмен</value>
+  </data>
   <data name="TextTempalate" xml:space="preserve">
     <value>Тут текст</value>
   </data>

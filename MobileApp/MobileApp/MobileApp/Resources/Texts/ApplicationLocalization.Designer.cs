@@ -61,6 +61,312 @@ namespace MobileApp.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string AccountInfo_BirthdayText {
+            get {
+                return ResourceManager.GetString("AccountInfo_BirthdayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Body information.
+        /// </summary>
+        internal static string AccountInfo_BodyText {
+            get {
+                return ResourceManager.GetString("AccountInfo_BodyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string AccountInfo_ChangePasswordButtonText {
+            get {
+                return ResourceManager.GetString("AccountInfo_ChangePasswordButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string AccountInfo_EmailText {
+            get {
+                return ResourceManager.GetString("AccountInfo_EmailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update error.
+        /// </summary>
+        internal static string AccountInfo_ErrorText {
+            get {
+                return ResourceManager.GetString("AccountInfo_ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Groups information.
+        /// </summary>
+        internal static string AccountInfo_GroupsInfo {
+            get {
+                return ResourceManager.GetString("AccountInfo_GroupsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account info.
+        /// </summary>
+        internal static string AccountInfo_HeaderText {
+            get {
+                return ResourceManager.GetString("AccountInfo_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string AccountInfo_NameText {
+            get {
+                return ResourceManager.GetString("AccountInfo_NameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nutrition information.
+        /// </summary>
+        internal static string AccountInfo_NutritionText {
+            get {
+                return ResourceManager.GetString("AccountInfo_NutritionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string AccountInfo_PhoneText {
+            get {
+                return ResourceManager.GetString("AccountInfo_PhoneText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save changes.
+        /// </summary>
+        internal static string AccountInfo_SaveChangesButtonText {
+            get {
+                return ResourceManager.GetString("AccountInfo_SaveChangesButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sex.
+        /// </summary>
+        internal static string AccountInfo_SexText {
+            get {
+                return ResourceManager.GetString("AccountInfo_SexText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some error happened.
+        /// </summary>
+        internal static string Login_ErrorText {
+            get {
+                return ResourceManager.GetString("Login_ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Login_HeaderText {
+            get {
+                return ResourceManager.GetString("Login_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to password.
+        /// </summary>
+        internal static string Login_LoginButtonText {
+            get {
+                return ResourceManager.GetString("Login_LoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to login.
+        /// </summary>
+        internal static string Login_LoginTemplateText {
+            get {
+                return ResourceManager.GetString("Login_LoginTemplateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Login_PasswordTemplateText {
+            get {
+                return ResourceManager.GetString("Login_PasswordTemplateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Login_RegistrationButtonText {
+            get {
+                return ResourceManager.GetString("Login_RegistrationButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration_HeaderText {
+            get {
+                return ResourceManager.GetString("Registration_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Registration_LoginButtonText {
+            get {
+                return ResourceManager.GetString("Registration_LoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Registration_LoginTemplateText {
+            get {
+                return ResourceManager.GetString("Registration_LoginTemplateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Registration_PasswordTemplateText {
+            get {
+                return ResourceManager.GetString("Registration_PasswordTemplateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Registration_RegistrationButtonText {
+            get {
+                return ResourceManager.GetString("Registration_RegistrationButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add sportsmen.
+        /// </summary>
+        internal static string SportsmenList_AddSportsmenButtonText {
+            get {
+                return ResourceManager.GetString("SportsmenList_AddSportsmenButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string SportsmenList_BirthdayText {
+            get {
+                return ResourceManager.GetString("SportsmenList_BirthdayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string SportsmenList_DeleteSportsmenButtonText {
+            get {
+                return ResourceManager.GetString("SportsmenList_DeleteSportsmenButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string SportsmenList_EmailText {
+            get {
+                return ResourceManager.GetString("SportsmenList_EmailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sportsmens.
+        /// </summary>
+        internal static string SportsmenList_HeaderText {
+            get {
+                return ResourceManager.GetString("SportsmenList_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string SportsmenList_LoginButtonText {
+            get {
+                return ResourceManager.GetString("SportsmenList_LoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string SportsmenList_NameText {
+            get {
+                return ResourceManager.GetString("SportsmenList_NameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        internal static string SportsmenList_PhoneText {
+            get {
+                return ResourceManager.GetString("SportsmenList_PhoneText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some error happened.
+        /// </summary>
+        internal static string SportsmenList_RefreshDataError {
+            get {
+                return ResourceManager.GetString("SportsmenList_RefreshDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sex.
+        /// </summary>
+        internal static string SportsmenList_SexText {
+            get {
+                return ResourceManager.GetString("SportsmenList_SexText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sportsmen.
+        /// </summary>
+        internal static string SportsmenList_SportsmenHeaderText {
+            get {
+                return ResourceManager.GetString("SportsmenList_SportsmenHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is text.
         /// </summary>
         internal static string TextTempalate {

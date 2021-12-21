@@ -27,7 +27,7 @@ namespace MobileApp.Services.Account
                 IsSuccessful = true,
                 Result = new List<UserRoles>
                 {
-                    UserRoles.Athlet
+                    UserRoles.Relative
                 }
             });
         }

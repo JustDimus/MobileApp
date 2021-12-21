@@ -117,6 +117,108 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountInfo_BirthdayText" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="AccountInfo_BodyText" xml:space="preserve">
+    <value>Body information</value>
+  </data>
+  <data name="AccountInfo_ChangePasswordButtonText" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="AccountInfo_EmailText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="AccountInfo_ErrorText" xml:space="preserve">
+    <value>Update error</value>
+  </data>
+  <data name="AccountInfo_GroupsInfo" xml:space="preserve">
+    <value>Groups information</value>
+  </data>
+  <data name="AccountInfo_HeaderText" xml:space="preserve">
+    <value>Account info</value>
+  </data>
+  <data name="AccountInfo_NameText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="AccountInfo_NutritionText" xml:space="preserve">
+    <value>Nutrition information</value>
+  </data>
+  <data name="AccountInfo_PhoneText" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="AccountInfo_SaveChangesButtonText" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="AccountInfo_SexText" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="Login_ErrorText" xml:space="preserve">
+    <value>Some error happened</value>
+  </data>
+  <data name="Login_HeaderText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_LoginButtonText" xml:space="preserve">
+    <value>password</value>
+  </data>
+  <data name="Login_LoginTemplateText" xml:space="preserve">
+    <value>login</value>
+  </data>
+  <data name="Login_PasswordTemplateText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login_RegistrationButtonText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration_HeaderText" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Registration_LoginButtonText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Registration_LoginTemplateText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Registration_PasswordTemplateText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Registration_RegistrationButtonText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="SportsmenList_AddSportsmenButtonText" xml:space="preserve">
+    <value>Add sportsmen</value>
+  </data>
+  <data name="SportsmenList_BirthdayText" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="SportsmenList_DeleteSportsmenButtonText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SportsmenList_EmailText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SportsmenList_HeaderText" xml:space="preserve">
+    <value>Sportsmens</value>
+  </data>
+  <data name="SportsmenList_LoginButtonText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="SportsmenList_NameText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SportsmenList_PhoneText" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="SportsmenList_RefreshDataError" xml:space="preserve">
+    <value>Some error happened</value>
+  </data>
+  <data name="SportsmenList_SexText" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="SportsmenList_SportsmenHeaderText" xml:space="preserve">
+    <value>Sportsmen</value>
+  </data>
   <data name="TextTempalate" xml:space="preserve">
     <value>There is text</value>
   </data>

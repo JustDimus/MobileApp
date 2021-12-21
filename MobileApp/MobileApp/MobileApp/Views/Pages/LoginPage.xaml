@@ -10,7 +10,7 @@
                      Spacing="15"
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="Center">
-            <Label Text="Логин нахуй"/>
+            <Label Text="{Binding HeaderText}"/>
             <Entry Placeholder="{Binding LoginTemplateText}"
                    Text="{Binding LoginProperty, Mode=TwoWay}" />
             <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"

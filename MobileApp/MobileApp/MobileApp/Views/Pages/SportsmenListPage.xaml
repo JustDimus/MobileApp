@@ -7,7 +7,7 @@
              BindingContext="{Binding SportsmenListPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="25">
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="1*"/>
@@ -21,7 +21,7 @@
                    HorizontalTextAlignment="Start"/>
                 <Button Command="{Binding AddSportsmenCommand}"
                     Text="{Binding AddSportsmenButtonText}"/>
-                <!--<ListView ItemsSource="{Binding SportsmenDataList}"
+                <ListView ItemsSource="{Binding SportsmenDataList}"
                       SelectionMode="Single"
                       SelectedItem="{Binding OnSportsmenSelected, Mode=OneWayToSource}"
                       IsEnabled="{Binding DataReloadStatus}"
@@ -30,56 +30,44 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <Frame BorderColor="Gray" BackgroundColor="White" CornerRadius="6">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="6*"/>
-                                                <ColumnDefinition Width="4*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="2*"/>
-                                                <RowDefinition Height="5*"/>
-                                            </Grid.RowDefinitions>
-                                            <Button Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=DeleteSportsmenButtonText}"/>
-                                            <StackLayout Orientation="Vertical">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=NameText}"/>
-                                                    <Label Text="{Binding Fio}"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=PhoneText}"/>
-                                                    <Label Text="{Binding Phone}"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=EmailText}"/>
-                                                    <Label Text="{Binding Email}"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=BirthdayText}"/>
-                                                    <Label Text="{Binding BirthdayDate}"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=SexText}"/>
-                                                    <Label Text="{Binding Sex}"/>
-                                                </StackLayout>
+                                    <Frame BorderColor="Gray" BackgroundColor="White" CornerRadius="6" Padding="15,0,0,15" VerticalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Vertical"
+                                                     Spacing="5">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=NameText}"/>
+                                                <Label Text="{Binding Fio}"/>
                                             </StackLayout>
-                                        </Grid>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=PhoneText}"/>
+                                                <Label Text="{Binding Phone}"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=EmailText}"/>
+                                                <Label Text="{Binding Email}"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=BirthdayText}"/>
+                                                <Label Text="{Binding BirthdayDate}"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=SexText}"/>
+                                                <Label Text="{Binding Sex}"/>
+                                            </StackLayout>
+                                        </StackLayout>
                                     </Frame>
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>-->
+                </ListView>
                 <Label Text="{Binding RefreshDataError}"
                    IsVisible="{Binding DataReloadStatus, Converter={StaticResource BoolInverter}}"/>
             </StackLayout>
             <StackLayout Grid.Row="1"
                          HorizontalOptions="FillAndExpand"
                          Orientation="Horizontal">
-                <ImageButton Source="list_icon.png"/>
-                <ImageButton Source="profile_icon.png" Command="{Binding GoToProfileCommand}" />
+                <ImageButton Source="list_icon.png" HorizontalOptions="StartAndExpand"/>
+                <ImageButton Source="profile_icon.png" Command="{Binding GoToProfileCommand}" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -1,4 +1,5 @@
 ﻿using MobileApp.Library.DataManagement.Authorization;
+using MobileApp.Library.DataManagement.Models;
 using MobileApp.Library.Network.NetworkConnection;
 using MobileApp.Services.Navigation;
 using System;
@@ -13,12 +14,12 @@ namespace MobileApp.ViewModels.Pages
     public class LoginViewModel : BasePageViewModel
     {
         #region Texts
-        public string HeaderText { get; } = Localization.TextTempalate;
-        public string LoginTemplateText { get; } = Localization.TextTempalate;
-        public string PasswordTemplateText { get; } = Localization.TextTempalate;
-        public string LoginButtonText { get; } = Localization.TextTempalate;
-        public string RegistrationButtonText { get; } = Localization.TextTempalate;
-        public string ErrorText { get; } = Localization.TextTempalate;
+        public string HeaderText { get; } = Localization.Login_HeaderText;
+        public string LoginTemplateText { get; } = Localization.Login_LoginTemplateText;
+        public string PasswordTemplateText { get; } = Localization.Login_PasswordTemplateText;
+        public string LoginButtonText { get; } = Localization.Login_LoginButtonText;
+        public string RegistrationButtonText { get; } = Localization.Login_RegistrationButtonText;
+        public string ErrorText { get; } = Localization.Login_ErrorText;
         #endregion
 
         private readonly IAuthorizationService _authorizationService;
@@ -54,6 +55,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 this.login = value;
                 this.OnPropertyChanged();
+                this.OnPropertyChanged(nameof(this.LoginButtonStatus));
             }
         }
 
@@ -65,6 +67,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 this.password = value;
                 this.OnPropertyChanged();
+                this.LoginCommand.ChangeCanExecute();
             }
         }
 
@@ -75,7 +78,7 @@ namespace MobileApp.ViewModels.Pages
             set
             {
                 this.errorStatus = value;
-                this.OnPropertyChanged();
+                this.LoginCommand.ChangeCanExecute();
             }
         }
         #endregion
@@ -87,7 +90,9 @@ namespace MobileApp.ViewModels.Pages
 
         private bool LoginButtonStatus
         {
-            get => !this.loginProcessStarted;
+            get => !this.loginProcessStarted
+                && !string.IsNullOrWhiteSpace(this.LoginProperty)
+                && !string.IsNullOrWhiteSpace(this.PasswordProperty);
             set
             {
                 this.loginProcessStarted = value;
@@ -99,7 +104,18 @@ namespace MobileApp.ViewModels.Pages
         {
             this.LoginButtonStatus = true;
 
-            this.MoveToNextPage();
+            var loginData = new LoginData()
+            {
+                Login = this.LoginProperty,
+                Password = this.PasswordProperty
+            };
+
+            var result = await this._authorizationService.AuthorizeAsync(loginData);
+
+            if (result == AuthorizationStatuses.Authorized)
+            {
+                this.MoveToNextPage();
+            }
 
             this.LoginButtonStatus = false;
         }

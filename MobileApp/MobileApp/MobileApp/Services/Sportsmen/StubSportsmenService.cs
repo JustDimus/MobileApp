@@ -8,7 +8,7 @@ namespace MobileApp.Services.Sportsmen
 {
     internal class StubSportsmenService : ISportsmenService
     {
-        public AccountData SelectedSportsmen => throw new NotImplementedException();
+        public AccountData SelectedSportsmen => this.savedAccount;
 
         private AccountData savedAccount;
 
@@ -65,11 +65,19 @@ namespace MobileApp.Services.Sportsmen
                 {
                     new AccountData()
                     {
-
+                        Fio = "Boar The Turbo",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar@gmail.com",
+                        Sex = "Dikiy",
+                        Phone = "+5554321223"
                     },
                     new AccountData()
                     {
-
+                        Fio = "The Turbo Boar",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar2@gmail.com",
+                        Sex = "Besheniy",
+                        Phone = "+1234566799"
                     }
                 }
             });

@@ -1,4 +1,5 @@
 ﻿using MobileApp.Library.DataManagement.Authorization;
+using MobileApp.Library.DataManagement.Models;
 using MobileApp.Library.Network.NetworkConnection;
 using MobileApp.Services.Navigation;
 using System;
@@ -13,11 +14,11 @@ namespace MobileApp.ViewModels.Pages
     public class RegistrationViewModel : BasePageViewModel
     {
         #region Texts
-        public string HeaderText { get; } = Localization.TextTempalate;
-        public string LoginTemplateText { get; } = Localization.TextTempalate;
-        public string PasswordTemplateText { get; } = Localization.TextTempalate;
-        public string RegistrationButtonText { get; } = Localization.TextTempalate;
-        public string LoginButtonText { get; } = Localization.TextTempalate;
+        public string HeaderText { get; } = Localization.Registration_HeaderText;
+        public string LoginTemplateText { get; } = Localization.Registration_LoginTemplateText;
+        public string PasswordTemplateText { get; } = Localization.Registration_PasswordTemplateText;
+        public string RegistrationButtonText { get; } = Localization.Registration_RegistrationButtonText;
+        public string LoginButtonText { get; } = Localization.Registration_LoginButtonText;
         #endregion
 
         private readonly IAuthorizationService _authorizationService;
@@ -53,6 +54,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 this.login = value;
                 this.OnPropertyChanged();
+                this.RegistrationCommand.ChangeCanExecute();
             }
         }
 
@@ -64,6 +66,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 this.password = value;
                 this.OnPropertyChanged();
+                this.RegistrationCommand.ChangeCanExecute();
             }
         }
         #endregion
@@ -75,7 +78,10 @@ namespace MobileApp.ViewModels.Pages
 
         private bool RegistrationButtonStatus
         {
-            get => this.registrationProcessStarted;
+            get => !this.registrationProcessStarted
+                && !string.IsNullOrWhiteSpace(this.LoginProperty)
+                && !string.IsNullOrWhiteSpace(this.PasswordProperty)
+                && this.PasswordProperty?.Length > 8;
             set
             {
                 this.registrationProcessStarted = false;
@@ -85,7 +91,25 @@ namespace MobileApp.ViewModels.Pages
 
         private async Task RegisterAsync()
         {
+            this.RegistrationButtonStatus = true;
 
+            var registrationData = new RegistrationData()
+            {
+                Email = this.LoginProperty,
+                Password = this.PasswordProperty,
+                Name = $"New User - {Guid.NewGuid()}",
+                Phone = $"+380132455656",
+                Sex = "Female"
+            };
+
+            var result = await this._authorizationService.AuthorizeAsync(registrationData);
+
+            if (result == AuthorizationStatuses.Authorized)
+            {
+                this.MoveToNextPage();
+            }
+
+            this.RegistrationButtonStatus = false;
         }
 
         private void MoveToLoginPage()
