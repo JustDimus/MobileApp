@@ -16,7 +16,7 @@ namespace MobileApp.ViewModels
 
         private IDisposable changePageDisposable;
 
-        internal MainViewModel(
+        public MainViewModel(
             INavigationService navigationService)
         {
             this._navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));

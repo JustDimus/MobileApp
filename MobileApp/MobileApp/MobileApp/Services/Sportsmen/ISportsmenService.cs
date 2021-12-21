@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MobileApp.Services.Sportsmen
 {
-    internal interface ISportsmenService
+    public interface ISportsmenService
     {
         bool SelectSportsmen(AccountData account);
 

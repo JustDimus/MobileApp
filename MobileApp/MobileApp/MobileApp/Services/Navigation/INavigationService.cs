@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MobileApp.Services.Navigation
 {
-    internal interface INavigationService
+    public interface INavigationService
     {
         void MoveToPage(Pages page);
 

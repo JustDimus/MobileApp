@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MobileApp.Services.Navigation
 {
-    internal enum Pages
+    public enum Pages
     {
         Login,
         Registration,

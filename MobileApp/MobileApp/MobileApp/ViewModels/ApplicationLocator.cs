@@ -46,6 +46,12 @@ namespace MobileApp.ViewModels
             container.Register<RelativeInfoViewModel>().AsSingleton();
             container.Register<AccountInfoViewModel>().AsSingleton();
             container.Register<SportsmenListViewModel>().AsSingleton();
+
+            this.LoginPageViewModel = container.Resolve<LoginViewModel>();
+            this.MainPageViewModel = container.Resolve<MainViewModel>();
+            this.RegistrationPageViewModel = container.Resolve<RegistrationViewModel>();
+            this.SportsmenListPageViewModel = container.Resolve<SportsmenListViewModel>();
+            this.AccountInfoPageViewModel = container.Resolve<AccountInfoViewModel>();
         }
 
         public LoginViewModel LoginPageViewModel { get; }

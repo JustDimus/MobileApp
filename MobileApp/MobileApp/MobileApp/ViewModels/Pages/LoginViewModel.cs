@@ -30,7 +30,7 @@ namespace MobileApp.ViewModels.Pages
 
         private IDisposable authorizationStatusDisposable;
 
-        internal LoginViewModel(
+        public LoginViewModel(
             IAuthorizationService authorizationService,
             INetworkConnectionService networkConnectionService,
             INavigationService navigationService)
@@ -87,7 +87,7 @@ namespace MobileApp.ViewModels.Pages
 
         private bool LoginButtonStatus
         {
-            get => this.loginProcessStarted;
+            get => !this.loginProcessStarted;
             set
             {
                 this.loginProcessStarted = value;
@@ -97,11 +97,11 @@ namespace MobileApp.ViewModels.Pages
 
         private async Task LoginAsync()
         {
-            this.LoginButtonStatus = false;
-
-
-
             this.LoginButtonStatus = true;
+
+            this.MoveToNextPage();
+
+            this.LoginButtonStatus = false;
         }
 
         private void MoveToRegistrationPage()
@@ -121,7 +121,7 @@ namespace MobileApp.ViewModels.Pages
                 return;
             }
 
-            //TODO
+            this._navigationService.MoveToPage(Services.Navigation.Pages.SpotsmenList);
         }
 
         private void OnAuthorizationStatusChanged(AuthorizationStatuses status)

@@ -6,10 +6,56 @@
              BindingContext="{Binding AccountInfoPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical"
+                     Spacing="15"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center"
+                     Grid.Row="0">
+                <Label Text="{Binding HeaderText}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding NameText}"/>
+                    <Entry IsReadOnly="{Binding IsReadonly}"
+                           Text="{Binding CurrentAccount.Fio}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding PhoneText}"/>
+                    <Entry IsReadOnly="{Binding IsReadonly}"
+                           Text="{Binding CurrentAccount.Phone}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding EmailText}"/>
+                    <Entry IsReadOnly="{Binding IsReadonly}"
+                           Text="{Binding CurrentAccount.Email}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding BirthdayText}"/>
+                    <Entry IsReadOnly="{Binding IsReadonly}"
+                           Text="{Binding CurrentAccount.BirthdayDate}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding SexText}"/>
+                    <Entry IsReadOnly="{Binding IsReadonly}"
+                           Text="{Binding CurrentAccount.Sex}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             IsEnabled="{Binding IsReadonly, Converter={StaticResource BoolInverter}}"
+                             IsVisible="{Binding IsReadonly, Converter={StaticResource BoolInverter}}">
+                    <Button Text="{Binding SaveChangesButtonText}"
+                            Command="{Binding SaveChangesCommand}" />
+                    <Button Text="{Binding ChangePasswordButtonText}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal">
+                <ImageButton Source="list_icon.png" Command="{Binding GoToSportsmenListCommand}"/>
+                <ImageButton Source="profile_icon.png" />
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </local:BasePage>

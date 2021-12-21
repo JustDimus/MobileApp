@@ -38,25 +38,28 @@ namespace MobileApp.ViewModels.Pages
 
         private IDisposable authorizationDisposable;
 
-        internal SportsmenListViewModel(
+        public SportsmenListViewModel(
             INavigationService navigationService,
             ISportsmenService sportsmenService,
             IAuthorizationService authorizationService)
         {
             this._navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
             this._authorizationService = authorizationService ?? throw new ArgumentNullException(nameof(authorizationService));
+            this._sportsmenService = sportsmenService ?? throw new ArgumentNullException(nameof(sportsmenService));
 
             this.AddSportsmenCommand = new Command(() => { });
+            this.GoToProfileCommand = new Command(this.MoveToProfilePage);
 
             this.authorizationDisposable = this._authorizationService.AuthorizationStatusObservable.Subscribe(this.OnAuthorizationChanged);
         }
 
         #region Commands
         public Command AddSportsmenCommand { get; }
+        public Command GoToProfileCommand { get; }
         #endregion
 
         #region Bindings
-        public List<AccountData> sportsmenList;
+        public IEnumerable<AccountData> sportsmenList;
         public IEnumerable<AccountData> SportsmenDataList
         {
             get => this.sportsmenList;
@@ -131,6 +134,17 @@ namespace MobileApp.ViewModels.Pages
             }
 
             this._navigationService.MoveToPage(Services.Navigation.Pages.Login);
+        }
+
+        private void MoveToProfilePage()
+        {
+            if (!this.PageLoaded)
+            {
+                return;
+            }
+
+            this._sportsmenService.ClearSelectedSportsmen();
+            this._navigationService.MoveToPage(Services.Navigation.Pages.AccountInfo);
         }
 
         private void OnAuthorizationChanged(AuthorizationStatuses status)

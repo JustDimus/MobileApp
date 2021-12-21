@@ -29,7 +29,7 @@ namespace MobileApp.ViewModels.Pages
 
         private IDisposable authorizationStatusDisposable;
 
-        internal RegistrationViewModel(
+        public RegistrationViewModel(
             IAuthorizationService authorizationService,
             INetworkConnectionService networkConnectionService,
             INavigationService navigationService)

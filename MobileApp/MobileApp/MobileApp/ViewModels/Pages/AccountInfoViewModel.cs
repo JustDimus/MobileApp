@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
 
 namespace MobileApp.ViewModels.Pages
@@ -25,6 +26,8 @@ namespace MobileApp.ViewModels.Pages
         public string BodyText { get; } = Localization.TextTempalate;
         public string GroupsText { get; } = Localization.TextTempalate;
         public string ErrorText { get; } = Localization.TextTempalate;
+        public string SaveChangesButtonText { get; } = Localization.TextTempalate;
+        public string ChangePasswordButtonText { get; } = Localization.TextTempalate;
         #endregion
 
         private IAuthorizationService _authorizationService;
@@ -44,7 +47,7 @@ namespace MobileApp.ViewModels.Pages
         private IDisposable authorizationStatusDisposable;
         private Task pageReloadingTask;
 
-        internal AccountInfoViewModel(
+        public AccountInfoViewModel(
             IAuthorizationService authorizationService,
             IAccountService accountService,
             ISportsmenService sportsmenService,
@@ -55,8 +58,16 @@ namespace MobileApp.ViewModels.Pages
             this._accountService = accountService ?? throw new ArgumentNullException(nameof(accountService));
             this._sportsmenService = sportsmenService ?? throw new ArgumentNullException(nameof(sportsmenService));
 
+            this.GoToSportsmenListCommand = new Command(this.MoveToSportsmenListPage);
+            this.SaveChangesCommand = new Command(async () => await this.SaveAccountInfoChangesAsync());
+
             this.authorizationStatusDisposable = this._authorizationService.AuthorizationStatusObservable.Subscribe(this.OnAuthorizationStatusChanged);
         }
+
+        #region Commands
+        public Command GoToSportsmenListCommand { get; }
+        public Command SaveChangesCommand { get; }
+        #endregion
 
         #region Bindings
         public AccountData CurrentAccount
@@ -164,6 +175,11 @@ namespace MobileApp.ViewModels.Pages
             }
         }
 
+        private async Task SaveAccountInfoChangesAsync()
+        {
+
+        }
+
         private async Task LoadBaseAccountInfoAsync()
         {
             this.IsReadonly = false;
@@ -212,6 +228,16 @@ namespace MobileApp.ViewModels.Pages
         private async Task ClearGraphics()
         {
 
+        }
+
+        private void MoveToSportsmenListPage()
+        {
+            if (!this.PageLoaded)
+            {
+                return;
+            }
+
+            this._navigationService.MoveToPage(Services.Navigation.Pages.SpotsmenList);
         }
 
         private void MoveToLoginPage()
