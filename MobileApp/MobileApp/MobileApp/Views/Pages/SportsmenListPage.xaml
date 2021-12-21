@@ -6,10 +6,41 @@
              BindingContext="{Binding SportsmenListPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical"
+                     Spacing="15"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center"
+                     Grid.Row="0">
+                <Label Text="{Binding HeaderText}"
+                   HorizontalTextAlignment="Start"/>
+                <Button Command="{Binding AddSportsmenCommand}"
+                    Text="{Binding AddSportsmenButtonText}"/>
+                <ListView ItemsSource="{Binding SportsmenDataList}"
+                      SelectionMode="Single"
+                      SelectedItem="{Binding OnSportsmenSelected, Mode=OneWayToSource}"
+                      IsEnabled="{Binding DataReloadStatus}"
+                      IsVisible="{Binding DataReloadStatus}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Label Text="{Binding GroupName}"/>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="{Binding RefreshDataError}"
+                   IsVisible="{Binding DataReloadStatus, Converter={StaticResource BoolInverter}}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </local:BasePage>

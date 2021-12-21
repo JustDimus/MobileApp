@@ -6,10 +6,23 @@
              BindingContext="{Binding RegistrationPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <StackLayout Orientation="Vertical"
+                     Spacing="15"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center">
+            <Label Text="{Binding HeaderText}"/>
+            <Entry Placeholder="{Binding LoginTemplateText}"
+                   Text="{Binding LoginProperty, Mode=TwoWay}" />
+            <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"
+                   IsPassword="True"
+                   Placeholder="Password" />
+            <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding RegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
+                <Button Command="{Binding GoToLoginCommand}" Text="{Binding LoginButtonText}"/>
+            </StackLayout>
+                    <Label Text="{Binding ErrorText}"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding ShowError}"/>
+            </StackLayout>
     </ContentPage.Content>
 </local:BasePage>

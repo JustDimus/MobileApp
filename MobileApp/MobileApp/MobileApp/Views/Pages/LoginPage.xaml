@@ -6,27 +6,23 @@
              BindingContext="{Binding LoginPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" 
-                 Spacing="15" 
-                 HorizontalOptions="CenterAndExpand"
-                 VerticalOptions="Center">
-            <Label Style="{DynamicResource EntryDescription}"
-               Text="{Binding EmailLabelText}" />
-            <Entry Style="{DynamicResource DefaultEntry}"
-               Placeholder="email@email.com"
-               Text="{Binding EmailField, Mode=TwoWay}" />
-            <Label Style="{DynamicResource EntryDescription}"
-               Text="{Binding PasswordLabelText}"/>
-            <Entry Style="{DynamicResource DefaultEntry}"
-               Text="{Binding PasswordField, Mode=TwoWay}"
-               IsPassword="True"
-               Placeholder="Password" />
-            <Button Command="{Binding LoginCommand}" Text="{Binding LoginButtonText}"/>
-            <Button Command="{Binding GoToRegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
-            <Label Style="{DynamicResource ErrorLabel}"
-               Text="{Binding ErrorText}"
-               HorizontalTextAlignment="Center"
-               IsVisible="{Binding ShowError}"/>
+        <StackLayout Orientation="Vertical"
+                     Spacing="15"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center">
+            <Label Text="{Binding HeaderText}"/>
+            <Entry Placeholder="{Binding LoginTemplateText}"
+                   Text="{Binding LoginProperty, Mode=TwoWay}" />
+            <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"
+                   IsPassword="True"
+                   Placeholder="Password" />
+            <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding LoginCommand}" Text="{Binding LoginButtonText}"/>
+                <Button Command="{Binding GoToRegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
+            </StackLayout>
+            <Label Text="{Binding ErrorText}"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding ShowError}"/>
         </StackLayout>
     </ContentPage.Content>
 </local:BasePage>

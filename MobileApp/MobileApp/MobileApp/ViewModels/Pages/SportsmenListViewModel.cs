@@ -26,6 +26,7 @@ namespace MobileApp.ViewModels.Pages
         public string EmailText { get; } = Localization.TextTempalate;
         public string BirthdayText { get; } = Localization.TextTempalate;
         public string SexText { get; } = Localization.TextTempalate;
+        public string RefreshDataError { get; } = Localization.TextTempalate;
         #endregion
 
         private readonly INavigationService _navigationService;
@@ -45,18 +46,18 @@ namespace MobileApp.ViewModels.Pages
             this._navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
             this._authorizationService = authorizationService ?? throw new ArgumentNullException(nameof(authorizationService));
 
-
+            this.AddSportsmenCommand = new Command(() => { });
 
             this.authorizationDisposable = this._authorizationService.AuthorizationStatusObservable.Subscribe(this.OnAuthorizationChanged);
         }
 
         #region Commands
-
+        public Command AddSportsmenCommand { get; }
         #endregion
 
         #region Bindings
         public List<AccountData> sportsmenList;
-        public List<AccountData> SportsmenDataList
+        public IEnumerable<AccountData> SportsmenDataList
         {
             get => this.sportsmenList;
             set
@@ -65,7 +66,7 @@ namespace MobileApp.ViewModels.Pages
                 this.OnPropertyChanged();
             }
         }
-        public bool DataReloadError
+        public bool DataReloadStatus
         {
             get => this.dataReloadStatus;
             set
@@ -86,7 +87,7 @@ namespace MobileApp.ViewModels.Pages
         protected override void OnPageLoaded()
         {
             this.SportsmenDataList = null;
-            this.DataReloadError = false;
+            this.DataReloadStatus = false;
             this._sportsmenService.ClearSelectedSportsmen();
             _ = this.ReloadPageData();
         }
@@ -103,12 +104,12 @@ namespace MobileApp.ViewModels.Pages
 
             if (sportsmenListResult.IsSuccessful)
             {
-                this.DataReloadError = false;
+                this.DataReloadStatus = false;
                 this.SportsmenDataList = sportsmenListResult.Result;
             }
             else
             {
-                this.DataReloadError = true;
+                this.DataReloadStatus = true;
             }
         }
 

@@ -2,10 +2,12 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:MobileApp.Views.Converters"
              x:Class="MobileApp.App">
     <Application.Resources>
         <ResourceDictionary>
             <viewModels:ApplicationLocator x:Key="Locator" />
+            <converters:BoolInversionConverter x:Key="BoolInverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

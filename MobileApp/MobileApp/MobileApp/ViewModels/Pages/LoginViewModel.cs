@@ -18,6 +18,7 @@ namespace MobileApp.ViewModels.Pages
         public string PasswordTemplateText { get; } = Localization.TextTempalate;
         public string LoginButtonText { get; } = Localization.TextTempalate;
         public string RegistrationButtonText { get; } = Localization.TextTempalate;
+        public string ErrorText { get; } = Localization.TextTempalate;
         #endregion
 
         private readonly IAuthorizationService _authorizationService;
@@ -63,6 +64,17 @@ namespace MobileApp.ViewModels.Pages
             set
             {
                 this.password = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        private bool errorStatus;
+        public bool ShowError
+        {
+            get => this.errorStatus;
+            set
+            {
+                this.errorStatus = value;
                 this.OnPropertyChanged();
             }
         }
