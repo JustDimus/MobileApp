@@ -69,6 +69,17 @@ namespace MobileApp.ViewModels.Pages
                 this.RegistrationCommand.ChangeCanExecute();
             }
         }
+
+        private bool errorStatus;
+        public bool ShowError
+        {
+            get => this.errorStatus;
+            set
+            {
+                this.errorStatus = value;
+                this.OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Commands

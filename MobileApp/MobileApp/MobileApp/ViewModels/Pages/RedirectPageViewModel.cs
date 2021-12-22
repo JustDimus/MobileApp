@@ -9,7 +9,7 @@ using System.Text;
 
 namespace MobileApp.ViewModels.Pages
 {
-    internal class RedirectPageViewModel : BasePageViewModel
+    public class RedirectPageViewModel : BasePageViewModel
     {
         private IAuthorizationService _authorizationService;
         private INavigationService _navigationService;
@@ -45,12 +45,10 @@ namespace MobileApp.ViewModels.Pages
                     case Services.Models.UserRoles.Coach:
                     case Services.Models.UserRoles.Relative:
                     default:
-                        this._navigationService.MoveToPage(Services.Navigation.Pages.SpotsmenList);
+                        this._navigationService.MoveToPage(Services.Navigation.Pages.SportsmenList);
                         break;
                 }
             }
-
-            this._navigationService.MoveToPage(Services.Navigation.Pages.Login);
         }
 
         private void MoveToLoginPage()

@@ -49,6 +49,7 @@ namespace MobileApp.ViewModels
             container.Register<RegistrationViewModel>().AsSingleton();
             container.Register<RelativeInfoViewModel>().AsSingleton();
             container.Register<AccountInfoViewModel>().AsSingleton();
+            container.Register<RedirectPageViewModel>().AsSingleton();
             container.Register<SportsmenListViewModel>().AsSingleton();
 
             this.LoginPageViewModel = container.Resolve<LoginViewModel>();
@@ -56,6 +57,7 @@ namespace MobileApp.ViewModels
             this.RegistrationPageViewModel = container.Resolve<RegistrationViewModel>();
             this.SportsmenListPageViewModel = container.Resolve<SportsmenListViewModel>();
             this.AccountInfoPageViewModel = container.Resolve<AccountInfoViewModel>();
+            this.RedirectPageViewModel = container.Resolve<RedirectPageViewModel>();
         }
 
         public LoginViewModel LoginPageViewModel { get; }
@@ -67,6 +69,8 @@ namespace MobileApp.ViewModels
         public AccountInfoViewModel AccountInfoPageViewModel { get; }
 
         public SportsmenListViewModel SportsmenListPageViewModel { get; }
+
+        public RedirectPageViewModel RedirectPageViewModel { get; }
 
         public MainViewModel MainPageViewModel { get; }
     }

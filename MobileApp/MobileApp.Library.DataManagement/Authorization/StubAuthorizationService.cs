@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,9 @@ namespace MobileApp.Library.DataManagement.Authorization
     {
         private const AuthorizationStatuses DEFAULT_AUTHORIZATION_STATUS = AuthorizationStatuses.Authorized;
 
-        public IObservable<AuthorizationStatuses> AuthorizationStatusObservable => Observable.Return(DEFAULT_AUTHORIZATION_STATUS);
+        private BehaviorSubject<AuthorizationStatuses> _behaviorSubject = new BehaviorSubject<AuthorizationStatuses>(DEFAULT_AUTHORIZATION_STATUS);
+
+        public IObservable<AuthorizationStatuses> AuthorizationStatusObservable => this._behaviorSubject;
 
         public Task<AuthorizationStatuses> AuthorizeAsync(LoginData loginData)
         {

@@ -41,11 +41,13 @@ namespace MobileApp.ViewModels.Pages
         public SportsmenListViewModel(
             INavigationService navigationService,
             ISportsmenService sportsmenService,
+            IAccountService accountService,
             IAuthorizationService authorizationService)
         {
             this._navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
             this._authorizationService = authorizationService ?? throw new ArgumentNullException(nameof(authorizationService));
             this._sportsmenService = sportsmenService ?? throw new ArgumentNullException(nameof(sportsmenService));
+            this._accountService = accountService ?? throw new ArgumentNullException(nameof(accountService));
 
             this.AddSportsmenCommand = new Command(() => { });
             this.GoToProfileCommand = new Command(this.MoveToProfilePage);

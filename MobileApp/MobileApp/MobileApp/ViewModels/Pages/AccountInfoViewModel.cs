@@ -94,7 +94,7 @@ namespace MobileApp.ViewModels.Pages
             }
         }
 
-        public bool s
+        public bool ShowAthletInfo
         {
             get => this.isAthlet;
             private set
@@ -143,6 +143,16 @@ namespace MobileApp.ViewModels.Pages
                 this.OnPropertyChanged();
             }
         }
+        private bool showRedirectButtons;
+        public bool ShowRedirectSection
+        {
+            get => this.showRedirectButtons;
+            set
+            {
+                this.showRedirectButtons = value;
+                this.OnPropertyChanged();
+            }
+        }
         #endregion
 
         protected override void OnPageLoaded()
@@ -151,12 +161,19 @@ namespace MobileApp.ViewModels.Pages
             this.pageReloadingTask = ReloadPageDataAsync();
         }
 
+        protected override void OnPageUnloaded()
+        {
+            this.ShowAthletInfo = false;
+            this.ClearGraphics();
+        }
 
         private void ClearPageData()
         {
+            this.ShowRedirectSection = false;
             this.CurrentAccount = null;
             this.RefreshStatus = true;
             this.IsReadonly = true;
+            this.ShowAthletInfo = false;
             this.ClearGraphics();
         }
 
@@ -172,9 +189,9 @@ namespace MobileApp.ViewModels.Pages
                 {
                     case UserRoles.Athlet:
                         await this.LoadBaseAccountInfoAsync();
-
                         var currentAccount = await this._accountService.GetAccountDataAsync();
                         await this.LoadSportsmenInfoAsync(currentAccount.Result);
+                        this.ShowRedirectSection = false;
                         break;
                     case UserRoles.Relative:
                     case UserRoles.Coach:
@@ -189,6 +206,7 @@ namespace MobileApp.ViewModels.Pages
                             this.LoadBaseAccountInfoAsync(selectedAccount);
                             await this.LoadSportsmenInfoAsync(selectedAccount);
                         }
+                        this.ShowRedirectSection = true;
                         break;
                 }
             }
@@ -231,6 +249,8 @@ namespace MobileApp.ViewModels.Pages
 
         private async Task LoadSportsmenInfoAsync(AccountData accountData)
         {
+            this.ShowAthletInfo = true;
+
             var accountBodyData = await this._sportsmenService.GetBodyDataListAsync(accountData);
             var accountNutritionData = await this._sportsmenService.GetNutritionDataListAsync(accountData);
 
@@ -261,7 +281,7 @@ namespace MobileApp.ViewModels.Pages
                 {
                     using (SKPaint paint = new SKPaint()
                     {
-                        Style = SKPaintStyle.Fill,
+                        Style = SKPaintStyle.Stroke,
                         Color = SKColors.Black,
                         StrokeWidth = 5,
                         StrokeCap = SKStrokeCap.Round
@@ -281,7 +301,7 @@ namespace MobileApp.ViewModels.Pages
 
                     using (SKPaint paint = new SKPaint()
                     {
-                        Style = SKPaintStyle.Fill,
+                        Style = SKPaintStyle.Stroke,
                         Color = SKColors.Green,
                         StrokeWidth = 5,
                         StrokeCap = SKStrokeCap.Round
@@ -312,7 +332,7 @@ namespace MobileApp.ViewModels.Pages
                 {
                     using (SKPaint paint = new SKPaint()
                     {
-                        Style = SKPaintStyle.Fill,
+                        Style = SKPaintStyle.Stroke,
                         Color = SKColors.Yellow,
                         StrokeWidth = 5,
                         StrokeCap = SKStrokeCap.Round
@@ -332,7 +352,7 @@ namespace MobileApp.ViewModels.Pages
 
                     using (SKPaint paint = new SKPaint()
                     {
-                        Style = SKPaintStyle.Fill,
+                        Style = SKPaintStyle.Stroke,
                         Color = SKColors.Violet,
                         StrokeWidth = 5,
                         StrokeCap = SKStrokeCap.Round
@@ -362,10 +382,19 @@ namespace MobileApp.ViewModels.Pages
                 return;
             }
 
-            path.MoveTo(0, 0);
             for (int i = 0; i < values.Count(); i++)
             {
-                path.LineTo((float)i * (float)width / (float)values.Count(), (float)selector?.Invoke(values.ElementAt(i)) / (float)max * (float)height);
+                float x = (float)i * (float)width / (float)values.Count();
+                float y = (float)selector?.Invoke(values.ElementAt(i)) / (float)max * (float)height;
+
+                if (!path.LastPoint.IsEmpty)
+                {
+                    path.LineTo(new SKPoint(x, height - y));
+                }
+                else
+                {
+                    path.MoveTo(new SKPoint(x, height - y));
+                }
             }
         }
 
@@ -382,7 +411,7 @@ namespace MobileApp.ViewModels.Pages
                 return;
             }
 
-            this._navigationService.MoveToPage(Services.Navigation.Pages.SpotsmenList);
+            this._navigationService.MoveToPage(Services.Navigation.Pages.SportsmenList);
         }
 
         private void MoveToLoginPage()

@@ -10,7 +10,10 @@
                      Spacing="15"
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="Center">
-            <Label Text="{Binding HeaderText}"/>
+            <Label Text="{Binding HeaderText}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="35"
+                   TextColor="Black" />
             <Entry Placeholder="{Binding LoginTemplateText}"
                    Text="{Binding LoginProperty, Mode=TwoWay}" />
             <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"
@@ -20,9 +23,10 @@
                 <Button Command="{Binding RegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
                 <Button Command="{Binding GoToLoginCommand}" Text="{Binding LoginButtonText}"/>
             </StackLayout>
-                    <Label Text="{Binding ErrorText}"
+            <Label Text="{Binding ErrorText}"
                    HorizontalTextAlignment="Center"
-                   IsVisible="{Binding ShowError}"/>
-            </StackLayout>
+                   IsVisible="{Binding ShowError}"
+                   IsEnabled="{Binding ShowError}"/>
+        </StackLayout>
     </ContentPage.Content>
 </local:BasePage>

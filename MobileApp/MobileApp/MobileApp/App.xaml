@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <viewModels:ApplicationLocator x:Key="Locator" />
             <converters:BoolInversionConverter x:Key="BoolInverter"/>
+            <converters:TextExpanderConverter x:Key="TextExpander"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

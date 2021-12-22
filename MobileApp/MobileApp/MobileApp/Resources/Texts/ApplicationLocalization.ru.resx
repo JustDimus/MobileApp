@@ -163,7 +163,7 @@
     <value>Войти</value>
   </data>
   <data name="Login_LoginTemplateText" xml:space="preserve">
-    <value>логин</value>
+    <value>Логин</value>
   </data>
   <data name="Login_PasswordTemplateText" xml:space="preserve">
     <value>Пароль</value>

@@ -27,11 +27,13 @@ namespace MobileApp.Services.Sportsmen
                 {
                     new BodyData()
                     {
-
+                        Height = 155,
+                        Weight = 13
                     },
                     new BodyData()
                     {
-
+                        Height = 197,
+                        Weight = 23
                     }
                 }
             });
@@ -46,11 +48,13 @@ namespace MobileApp.Services.Sportsmen
                 {
                     new NutritionData()
                     {
-
+                        AmountOfWater = 4,
+                        Carbohydrates = 75
                     },
                     new NutritionData()
                     {
-
+                        AmountOfWater = 10,
+                        Carbohydrates = 17
                     }
                 }
             });
@@ -63,6 +67,38 @@ namespace MobileApp.Services.Sportsmen
                 IsSuccessful = true,
                 Result = new List<AccountData>()
                 {
+                    new AccountData()
+                    {
+                        Fio = "Boar The Turbo",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar@gmail.com",
+                        Sex = "Dikiy",
+                        Phone = "+5554321223"
+                    },
+                    new AccountData()
+                    {
+                        Fio = "The Turbo Boar",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar2@gmail.com",
+                        Sex = "Besheniy",
+                        Phone = "+1234566799"
+                    },
+                    new AccountData()
+                    {
+                        Fio = "Boar The Turbo",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar@gmail.com",
+                        Sex = "Dikiy",
+                        Phone = "+5554321223"
+                    },
+                    new AccountData()
+                    {
+                        Fio = "The Turbo Boar",
+                        BirthdayDate = DateTime.Now,
+                        Email = "boar2@gmail.com",
+                        Sex = "Besheniy",
+                        Phone = "+1234566799"
+                    },
                     new AccountData()
                     {
                         Fio = "Boar The Turbo",

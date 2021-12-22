@@ -58,11 +58,14 @@ namespace MobileApp.ViewModels
                 case Services.Navigation.Pages.Registration:
                     resultPage = new RegistrationPage();
                     break;
-                case Services.Navigation.Pages.SpotsmenList:
+                case Services.Navigation.Pages.SportsmenList:
                     resultPage = new SportsmenListPage();
                     break;
                 case Services.Navigation.Pages.AccountInfo:
                     resultPage = new AccountInfoPage();
+                    break;
+                case Services.Navigation.Pages.Redirect:
+                    resultPage = new RedirectPage();
                     break;
                 default:
                     break;

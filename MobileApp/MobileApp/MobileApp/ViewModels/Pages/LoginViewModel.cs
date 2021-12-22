@@ -88,6 +88,14 @@ namespace MobileApp.ViewModels.Pages
         public Command GoToRegistrationCommand { get; }
         #endregion
 
+        protected override void OnPageLoaded()
+        {
+            if (this.authorizationCompleted)
+            {
+                this.MoveToNextPage();
+            }
+        }
+
         private bool LoginButtonStatus
         {
             get => !this.loginProcessStarted
@@ -137,7 +145,7 @@ namespace MobileApp.ViewModels.Pages
                 return;
             }
 
-            this._navigationService.MoveToPage(Services.Navigation.Pages.SpotsmenList);
+            this._navigationService.MoveToPage(Services.Navigation.Pages.AccountInfo);
         }
 
         private void OnAuthorizationStatusChanged(AuthorizationStatuses status)

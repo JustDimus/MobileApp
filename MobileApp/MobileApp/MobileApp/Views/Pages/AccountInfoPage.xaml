@@ -5,46 +5,75 @@
              xmlns:local="clr-namespace:MobileApp.Views.Pages"
              BindingContext="{Binding AccountInfoPageViewModel, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="DefaultEntry" TargetType="Entry">
+            <Setter Property="WidthRequest" Value="200"/>
+            <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        </Style>
+        <Style x:Key="DefaultLabel" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style x:Key="SectionDefinitionLabel" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="25">
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Vertical"
+            <ScrollView>
+                <StackLayout Orientation="Vertical"
                      Spacing="15"
-                     HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="Center"
                      Grid.Row="0">
-                <Label Text="{Binding HeaderText}"/>
+                <Label Text="{Binding HeaderText}"
+                       HorizontalTextAlignment="Start"
+                       FontSize="30"
+                       TextColor="Black" />
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding NameText}"/>
+                    <Label Text="{Binding NameText, Converter={StaticResource TextExpander}}"
+                           VerticalOptions="CenterAndExpand"
+                           Style="{DynamicResource DefaultLabel}"/>
                     <Entry IsReadOnly="{Binding IsReadonly}"
-                           Text="{Binding CurrentAccount.Fio}"/>
+                           Text="{Binding CurrentAccount.Fio}"
+                           Style="{DynamicResource DefaultEntry}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding PhoneText}"/>
+                    <Label Text="{Binding PhoneText, Converter={StaticResource TextExpander}}"
+                           Style="{DynamicResource DefaultLabel}"/>
                     <Entry IsReadOnly="{Binding IsReadonly}"
-                           Text="{Binding CurrentAccount.Phone}"/>
+                           Text="{Binding CurrentAccount.Phone}"
+                           Style="{DynamicResource DefaultEntry}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding EmailText}"/>
+                    <Label Text="{Binding EmailText, Converter={StaticResource TextExpander}}"
+                           Style="{DynamicResource DefaultLabel}"/>
                     <Entry IsReadOnly="{Binding IsReadonly}"
-                           Text="{Binding CurrentAccount.Email}"/>
+                           Text="{Binding CurrentAccount.Email}"
+                           Style="{DynamicResource DefaultEntry}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding BirthdayText}"/>
+                    <Label Text="{Binding BirthdayText, Converter={StaticResource TextExpander}}"
+                           Style="{DynamicResource DefaultLabel}"/>
                     <Entry IsReadOnly="{Binding IsReadonly}"
-                           Text="{Binding CurrentAccount.BirthdayDate}"/>
+                           Text="{Binding CurrentAccount.BirthdayDate}"
+                           Style="{DynamicResource DefaultEntry}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding SexText}"/>
+                    <Label Text="{Binding SexText, Converter={StaticResource TextExpander}}"
+                           Style="{DynamicResource DefaultLabel}"/>
                     <Entry IsReadOnly="{Binding IsReadonly}"
-                           Text="{Binding CurrentAccount.Sex}"/>
+                           Text="{Binding CurrentAccount.Sex}"
+                           Style="{DynamicResource DefaultEntry}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal"
                              IsEnabled="{Binding IsReadonly, Converter={StaticResource BoolInverter}}"
-                             IsVisible="{Binding IsReadonly, Converter={StaticResource BoolInverter}}">
+                             IsVisible="{Binding IsReadonly, Converter={StaticResource BoolInverter}}"
+                             HorizontalOptions="EndAndExpand">
                     <Button Text="{Binding SaveChangesButtonText}"
                             Command="{Binding SaveChangesCommand}" />
                     <Button Text="{Binding ChangePasswordButtonText}" />
@@ -52,19 +81,32 @@
                 <StackLayout Orientation="Vertical"
                              IsEnabled="{Binding ShowAthletInfo}"
                              IsVisible="{Binding ShowAthletInfo}"
-                             Spacing="15">
-                    <Label Text="{Binding BodyText}"/>
-                    <Image Source="{Binding BodyImageSource}" Aspect="AspectFit"/>
-                    <Label Text="{Binding NutritionText}"/>
-                    <Image Source="{Binding NutritionImageSource}" Aspect="AspectFit"/>
+                             Spacing="15"
+                             Margin="0,10,0,0">
+                    <Label Text="{Binding BodyText}"
+                           Style="{DynamicResource SectionDefinitionLabel}"/>
+                    <Frame>
+                        <Image Source="{Binding BodyImageSource}" Aspect="AspectFit"/>
+                    </Frame>
+                    <Label Text="{Binding NutritionText}"
+                           Style="{DynamicResource SectionDefinitionLabel}"/>
+                    <Frame>
+                        <Image Source="{Binding NutritionImageSource}" Aspect="AspectFit"/>
+                    </Frame>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Grid.Row="1"
+            </ScrollView>
+            <Frame Grid.Row="1"
+                   CornerRadius="6"
+                   IsVisible="{Binding ShowRedirectSection}"
+                   IsEnabled="{Binding ShowRedirectSection}">
+                <StackLayout Grid.Row="1"
                          HorizontalOptions="FillAndExpand"
                          Orientation="Horizontal">
-                <ImageButton Source="list_icon.png" Command="{Binding GoToSportsmenListCommand}" HorizontalOptions="StartAndExpand"/>
-                <ImageButton Source="profile_icon.png" HorizontalOptions="EndAndExpand" />
-            </StackLayout>
+                    <ImageButton Source="list_icon.png" Command="{Binding GoToSportsmenListCommand}" HorizontalOptions="StartAndExpand"/>
+                    <ImageButton Source="profile_icon.png" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </local:BasePage>

@@ -15,24 +15,33 @@
             <StackLayout Orientation="Vertical"
                      Spacing="15"
                      HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="Center"
                      Grid.Row="0">
                 <Label Text="{Binding HeaderText}"
-                   HorizontalTextAlignment="Start"/>
+                       HorizontalTextAlignment="Start"
+                       FontSize="30"
+                       TextColor="Black"/>
                 <Button Command="{Binding AddSportsmenCommand}"
-                    Text="{Binding AddSportsmenButtonText}"/>
+                        Text="{Binding AddSportsmenButtonText}"
+                        HorizontalOptions="EndAndExpand" />
                 <ListView ItemsSource="{Binding SportsmenDataList}"
                       SelectionMode="Single"
                       SelectedItem="{Binding OnSportsmenSelected, Mode=OneWayToSource}"
+                      SeparatorColor="White"
                       IsEnabled="{Binding DataReloadStatus}"
-                      IsVisible="{Binding DataReloadStatus}">
+                      IsVisible="{Binding DataReloadStatus}"
+                      RowHeight="127">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <Frame BorderColor="Gray" BackgroundColor="White" CornerRadius="6" Padding="15,0,0,15" VerticalOptions="CenterAndExpand">
+                                    <Frame BorderColor="Gray"
+                                           BackgroundColor="White"
+                                           CornerRadius="6"
+                                           Padding="15,5,15,10"
+                                           VerticalOptions="FillAndExpand">
                                         <StackLayout Orientation="Vertical"
-                                                     Spacing="5">
+                                                     Spacing="5"
+                                                     VerticalOptions="FillAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SportsmenListViewModel}}, Path=NameText}"/>
                                                 <Label Text="{Binding Fio}"/>
@@ -63,12 +72,14 @@
                 <Label Text="{Binding RefreshDataError}"
                    IsVisible="{Binding DataReloadStatus, Converter={StaticResource BoolInverter}}"/>
             </StackLayout>
-            <StackLayout Grid.Row="1"
-                         HorizontalOptions="FillAndExpand"
-                         Orientation="Horizontal">
-                <ImageButton Source="list_icon.png" HorizontalOptions="StartAndExpand"/>
-                <ImageButton Source="profile_icon.png" Command="{Binding GoToProfileCommand}" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+            <Frame Grid.Row="1"
+                   CornerRadius="6">
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal">
+                    <ImageButton Source="list_icon.png" HorizontalOptions="StartAndExpand"/>
+                    <ImageButton Source="profile_icon.png" Command="{Binding GoToProfileCommand}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </local:BasePage>

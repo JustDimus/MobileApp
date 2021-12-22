@@ -7,8 +7,9 @@ namespace MobileApp.Services.Navigation
     public enum Pages
     {
         Login,
+        SportsmenList,
+        Redirect,
         Registration,
-        SpotsmenList,
         AccountInfo
     }
 }

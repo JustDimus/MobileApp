@@ -10,22 +10,27 @@
                      Spacing="15"
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="Center">
-            <Label Text="{Binding HeaderText}"/>
+            <Label Text="{Binding HeaderText}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="35"
+                   TextColor="Black" />
             <Entry Placeholder="{Binding LoginTemplateText}"
                    Text="{Binding LoginProperty, Mode=TwoWay}"
                    HorizontalOptions="CenterAndExpand"
-                   WidthRequest="450" />
+                   WidthRequest="250" />
             <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"
                    IsPassword="True"
-                   Placeholder="Password"
-                   WidthRequest="450" />
-            <StackLayout Orientation="Horizontal">
+                   Placeholder="{Binding PasswordTemplateText}"
+                   WidthRequest="250" />
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
                 <Button Command="{Binding LoginCommand}" Text="{Binding LoginButtonText}"/>
                 <Button Command="{Binding GoToRegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
             </StackLayout>
             <Label Text="{Binding ErrorText}"
                    HorizontalTextAlignment="Center"
-                   IsVisible="{Binding ShowError}"/>
+                   IsVisible="{Binding ShowError}"
+                   IsEnabled="{Binding ShowError}"/>
         </StackLayout>
     </ContentPage.Content>
 </local:BasePage>
