@@ -3,10 +3,11 @@ using MobileApp.Services.Account;
 using MobileApp.Services.Models;
 using MobileApp.Services.Navigation;
 using MobileApp.Services.Sportsmen;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Localization = MobileApp.Resources.Texts.ApplicationLocalization;
@@ -29,6 +30,9 @@ namespace MobileApp.ViewModels.Pages
         public string SaveChangesButtonText { get; } = Localization.AccountInfo_SaveChangesButtonText;
         public string ChangePasswordButtonText { get; } = Localization.AccountInfo_ChangePasswordButtonText;
         #endregion
+
+        private const int IMAGE_WIDTH = 450;
+        private const int IMAGE_HEIGHT = 250;
 
         private IAuthorizationService _authorizationService;
         private INavigationService _navigationService;
@@ -90,7 +94,7 @@ namespace MobileApp.ViewModels.Pages
             }
         }
 
-        public bool ShowAthletInfo
+        public bool s
         {
             get => this.isAthlet;
             private set
@@ -119,6 +123,26 @@ namespace MobileApp.ViewModels.Pages
                 this.OnPropertyChanged();
             }
         }
+        private ImageSource bodyImageSource;
+        public ImageSource BodyImageSource
+        {
+            get => this.bodyImageSource;
+            set
+            {
+                this.bodyImageSource = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private ImageSource nutritionImageSource;
+        public ImageSource NutritionImageSource
+        {
+            get => this.nutritionImageSource;
+            set
+            {
+                this.nutritionImageSource = value;
+                this.OnPropertyChanged();
+            }
+        }
         #endregion
 
         protected override void OnPageLoaded()
@@ -133,6 +157,7 @@ namespace MobileApp.ViewModels.Pages
             this.CurrentAccount = null;
             this.RefreshStatus = true;
             this.IsReadonly = true;
+            this.ClearGraphics();
         }
 
         private async Task ReloadPageDataAsync()
@@ -143,7 +168,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 var userRole = currentUserRole.Result.First();
 
-                switch(userRole)
+                switch (userRole)
                 {
                     case UserRoles.Athlet:
                         await this.LoadBaseAccountInfoAsync();
@@ -163,7 +188,7 @@ namespace MobileApp.ViewModels.Pages
                         {
                             this.LoadBaseAccountInfoAsync(selectedAccount);
                             await this.LoadSportsmenInfoAsync(selectedAccount);
-                        }    
+                        }
                         break;
                 }
             }
@@ -193,7 +218,7 @@ namespace MobileApp.ViewModels.Pages
                 this.RefreshStatus = false;
             }
         }
-        
+
         private void LoadBaseAccountInfoAsync(AccountData accountData)
         {
             if (accountData == null)
@@ -215,17 +240,139 @@ namespace MobileApp.ViewModels.Pages
             {
                 this.loadedBodyData = accountBodyData.Result;
                 this.loadedNutritionData = accountNutritionData.Result;
+                await this.RefreshGraphics();
             }
         }
 
         private async Task RefreshGraphics()
         {
+            var bodyResult = await Task.Run<Stream>(this.CreateBodyInfoImage);
+            var nutritionResult = await Task.Run<Stream>(this.CreateNutritionInfoImage);
 
+            this.BodyImageSource = ImageSource.FromStream(() => bodyResult);
+            this.NutritionImageSource = ImageSource.FromStream(() => nutritionResult);
         }
 
-        private async Task ClearGraphics()
+        private Stream CreateBodyInfoImage()
         {
+            using (SKBitmap bitmap = new SKBitmap(IMAGE_WIDTH, IMAGE_HEIGHT))
+            {
+                using (SKCanvas canvas = new SKCanvas(bitmap))
+                {
+                    using (SKPaint paint = new SKPaint()
+                    {
+                        Style = SKPaintStyle.Fill,
+                        Color = SKColors.Black,
+                        StrokeWidth = 5,
+                        StrokeCap = SKStrokeCap.Round
+                    })
+                    {
+                        using (SKPath path = new SKPath())
+                        {
+                            this.CreatePath(
+                                path,
+                                IMAGE_WIDTH,
+                                IMAGE_HEIGHT,
+                                this.loadedBodyData.Select(i => i.Height), i => (int)i.GetValueOrDefault(),
+                                (int)this.loadedBodyData.Select(i => i.Height).Max().GetValueOrDefault());
+                            canvas.DrawPath(path, paint);
+                        }
+                    }
 
+                    using (SKPaint paint = new SKPaint()
+                    {
+                        Style = SKPaintStyle.Fill,
+                        Color = SKColors.Green,
+                        StrokeWidth = 5,
+                        StrokeCap = SKStrokeCap.Round
+                    })
+                    {
+                        using (SKPath path = new SKPath())
+                        {
+                            this.CreatePath(
+                                path,
+                                IMAGE_WIDTH,
+                                IMAGE_HEIGHT,
+                                this.loadedBodyData.Select(i => i.Weight), i => (int)i.GetValueOrDefault(),
+                                (int)this.loadedBodyData.Select(i => i.Weight).Max().GetValueOrDefault());
+                            canvas.DrawPath(path, paint);
+                        }
+                    }
+                }
+
+                return bitmap.Encode(SKEncodedImageFormat.Png, 1).AsStream();
+            }
+        }
+
+        private Stream CreateNutritionInfoImage()
+        {
+            using (SKBitmap bitmap = new SKBitmap(IMAGE_WIDTH, IMAGE_HEIGHT))
+            {
+                using (SKCanvas canvas = new SKCanvas(bitmap))
+                {
+                    using (SKPaint paint = new SKPaint()
+                    {
+                        Style = SKPaintStyle.Fill,
+                        Color = SKColors.Yellow,
+                        StrokeWidth = 5,
+                        StrokeCap = SKStrokeCap.Round
+                    })
+                    {
+                        using (SKPath path = new SKPath())
+                        {
+                            this.CreatePath(
+                                path,
+                                IMAGE_WIDTH,
+                                IMAGE_HEIGHT,
+                                this.loadedNutritionData.Select(i => i.Carbohydrates), i => (int)i.GetValueOrDefault(),
+                                (int)this.loadedNutritionData.Select(i => i.Carbohydrates).Max().GetValueOrDefault());
+                            canvas.DrawPath(path, paint);
+                        }
+                    }
+
+                    using (SKPaint paint = new SKPaint()
+                    {
+                        Style = SKPaintStyle.Fill,
+                        Color = SKColors.Violet,
+                        StrokeWidth = 5,
+                        StrokeCap = SKStrokeCap.Round
+                    })
+                    {
+                        using (SKPath path = new SKPath())
+                        {
+                            this.CreatePath(
+                                path,
+                                IMAGE_WIDTH,
+                                IMAGE_HEIGHT,
+                                this.loadedNutritionData.Select(i => i.AmountOfWater), i => (int)i.GetValueOrDefault(),
+                                (int)this.loadedNutritionData.Select(i => i.AmountOfWater).Max().GetValueOrDefault());
+                            canvas.DrawPath(path, paint);
+                        }
+                    }
+                }
+
+                return bitmap.Encode(SKEncodedImageFormat.Png, 1).AsStream();
+            }
+        }
+
+        private void CreatePath<T>(SKPath path, int width, int height, IEnumerable<T> values, Func<T, int> selector, int max)
+        {
+            if (values == null && !values.Any())
+            {
+                return;
+            }
+
+            path.MoveTo(0, 0);
+            for (int i = 0; i < values.Count(); i++)
+            {
+                path.LineTo((float)i * (float)width / (float)values.Count(), (float)selector?.Invoke(values.ElementAt(i)) / (float)max * (float)height);
+            }
+        }
+
+        private void ClearGraphics()
+        {
+            this.BodyImageSource = null;
+            this.NutritionImageSource = null;
         }
 
         private void MoveToSportsmenListPage()

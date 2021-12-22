@@ -49,6 +49,15 @@
                             Command="{Binding SaveChangesCommand}" />
                     <Button Text="{Binding ChangePasswordButtonText}" />
                 </StackLayout>
+                <StackLayout Orientation="Vertical"
+                             IsEnabled="{Binding ShowAthletInfo}"
+                             IsVisible="{Binding ShowAthletInfo}"
+                             Spacing="15">
+                    <Label Text="{Binding BodyText}"/>
+                    <Image Source="{Binding BodyImageSource}" Aspect="AspectFit"/>
+                    <Label Text="{Binding NutritionText}"/>
+                    <Image Source="{Binding NutritionImageSource}" Aspect="AspectFit"/>
+                </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1"
                          HorizontalOptions="FillAndExpand"

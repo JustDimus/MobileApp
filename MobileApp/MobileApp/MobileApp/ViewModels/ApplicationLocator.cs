@@ -13,6 +13,7 @@ using MobileApp.Services.Account.Implementation;
 using MobileApp.Services.Navigation;
 using MobileApp.Services.Navigation.Implementation;
 using MobileApp.Services.Sportsmen;
+using MobileApp.Services.Sportsmen.Implementation;
 using MobileApp.ViewModels.Pages;
 using Nancy.TinyIoc;
 using System;
@@ -41,6 +42,7 @@ namespace MobileApp.ViewModels
             container.Register<INetworkCommunicationService, NetworkCommunicationService>().AsSingleton();
             container.Register<IAuthorizationService, AuthorizationService>().AsSingleton();
             container.Register<IAccountService, AccountService>().AsSingleton();
+            container.Register<ISportsmenService, SportsmenService>().AsSingleton();
 #endif
             container.Register<MainViewModel>().AsSingleton();
             container.Register<LoginViewModel>().AsSingleton();

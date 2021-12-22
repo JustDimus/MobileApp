@@ -12,10 +12,13 @@
                      VerticalOptions="Center">
             <Label Text="{Binding HeaderText}"/>
             <Entry Placeholder="{Binding LoginTemplateText}"
-                   Text="{Binding LoginProperty, Mode=TwoWay}" />
+                   Text="{Binding LoginProperty, Mode=TwoWay}"
+                   HorizontalOptions="CenterAndExpand"
+                   WidthRequest="450" />
             <Entry Text="{Binding PasswordProperty, Mode=TwoWay}"
                    IsPassword="True"
-                   Placeholder="Password" />
+                   Placeholder="Password"
+                   WidthRequest="450" />
             <StackLayout Orientation="Horizontal">
                 <Button Command="{Binding LoginCommand}" Text="{Binding LoginButtonText}"/>
                 <Button Command="{Binding GoToRegistrationCommand}" Text="{Binding RegistrationButtonText}"/>
