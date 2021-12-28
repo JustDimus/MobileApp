@@ -16,7 +16,7 @@ namespace MobileApp.Services.Sportsmen.Implementation
             this.relativeId = relativeId;
         }
 
-        public override string Address => $@"GetAthletByRelative?relativeId={this.relativeId}";
+        public override string Address => $@"AthletByRelative?relativeId={this.relativeId}";
 
         public override RequestMethods Method => RequestMethods.GET;
     }

@@ -32,19 +32,34 @@ namespace MobileApp.Library.Network.NeworkCommunication.Implementation
                 throw new ArgumentNullException(nameof(request));
             }
 
-            using (var httpRequest = new HttpRequestMessage()
+            try
             {
-                Method = this.GetHttpMethod(request.Method),
-                Content = request.Body == null ? null : new StringContent(request.Body, Encoding.UTF8, request.MediaType),
-                RequestUri = request.Url
-            })
-            {
-                foreach (var header in request.Headers)
+                using (var httpRequest = new HttpRequestMessage()
                 {
-                    httpRequest.Headers.Add(header.Key, header.Value);
-                }
+                    Method = this.GetHttpMethod(request.Method),
+                    Content = request.Body == null ? null : new StringContent(request.Body, Encoding.UTF8, request.MediaType),
+                    RequestUri = request.Url
+                })
+                {
+                    try
+                    {
+                        foreach (var header in request.Headers)
+                        {
+                            httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.Data.ToString();
+                    }
 
-                return await GetResponse(httpRequest);
+                    return await GetResponse(httpRequest);
+                }
+            }
+            catch(Exception ex)
+            {
+                ex.Data.ToString();
+                return null;
             }
         }
 
@@ -56,7 +71,7 @@ namespace MobileApp.Library.Network.NeworkCommunication.Implementation
             {
                 try
                 {
-                    var response = await this.httpClient.SendAsync(message, source.Token);
+                    var response = await this.httpClient.SendAsync(message);
 
                     result = new NetworkResponse()
                     {

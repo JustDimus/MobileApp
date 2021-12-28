@@ -98,7 +98,7 @@ namespace MobileApp.Library.DataManagement.Authorization.Implementation
                 this.lastUsedToken = result.Result;
             }
 
-            return AuthorizationStatuses.Unauthorized;
+            return authorizationStatus;
         }
     }
 }

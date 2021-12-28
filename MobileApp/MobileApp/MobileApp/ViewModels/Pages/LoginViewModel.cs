@@ -47,7 +47,7 @@ namespace MobileApp.ViewModels.Pages
         }
 
         #region Bindings
-        private string login;
+        private string login = "Relative1";
         public string LoginProperty
         {
             get => this.login;
@@ -59,7 +59,7 @@ namespace MobileApp.ViewModels.Pages
             }
         }
 
-        private string password;
+        private string password = "string";
         public string PasswordProperty
         {
             get => this.password;

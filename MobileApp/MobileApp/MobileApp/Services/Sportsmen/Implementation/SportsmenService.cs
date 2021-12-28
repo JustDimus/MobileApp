@@ -27,7 +27,7 @@ namespace MobileApp.Services.Sportsmen.Implementation
             this._accountService = accountService;
         }
 
-        public AccountData SelectedSportsmen => throw new NotImplementedException();
+        public AccountData SelectedSportsmen => this.selectedAccount;
 
         public bool ClearSelectedSportsmen()
         {
@@ -94,7 +94,7 @@ namespace MobileApp.Services.Sportsmen.Implementation
 
             if (account.IsSuccessful)
             {
-                var request = new GetNutritionDataListDataRequest(account.Result.Id, token);
+                var request = new GetSportsmenListDataRequest(account.Result.Id, token);
 
                 var result = await this._requestManager.SendRequestAsync<List<AccountData>>(request);
 
