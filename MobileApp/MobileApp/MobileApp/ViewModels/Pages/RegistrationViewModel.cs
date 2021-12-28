@@ -110,7 +110,7 @@ namespace MobileApp.ViewModels.Pages
                 Password = this.PasswordProperty,
                 Name = $"New User - {Guid.NewGuid()}",
                 Phone = $"+380132455656",
-                Sex = "Female"
+                Sex = "F"
             };
 
             var result = await this._authorizationService.AuthorizeAsync(registrationData);

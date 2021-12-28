@@ -1,4 +1,5 @@
-﻿using MobileApp.Library.DataManagement.Request;
+﻿using MobileApp.Library.DataManagement.NetworkModels;
+using MobileApp.Library.DataManagement.Request;
 using MobileApp.Library.Network.NetworkConnection;
 using MobileApp.Library.Network.NeworkCommunication;
 using Newtonsoft.Json;
@@ -60,11 +61,11 @@ namespace MobileApp.Library.DataManagement.RequestManagement.Implementation
 
             if (result.ResponseCode == SUCCESS_RESPONSE_CODE)
             {
-                var serializedData = JsonConvert.DeserializeObject<TEntity>(result.Body);
+                var serializedData = JsonConvert.DeserializeObject<BaseResult<TEntity>>(result.Body);
 
                 if (serializedData != null)
                 {
-                    return ResponseContext<TEntity>.FromResult(serializedData).AddRawBodyData(result.Body);
+                    return ResponseContext<TEntity>.FromResult(serializedData.Result, serializedData.IsSuccessful).AddRawBodyData(result.Body);
                 }
             }
 

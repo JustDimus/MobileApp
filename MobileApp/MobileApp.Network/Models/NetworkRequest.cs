@@ -15,7 +15,7 @@ namespace MobileApp.Library.Network.Models
 
         public abstract RequestMethods Method { get; }
 
-        public Uri Url => new Uri(this.Address);
+        public Uri Url => new Uri(this.Address, this.IsUrlRelative ? UriKind.Relative : UriKind.Absolute);
 
         public IReadOnlyDictionary<string, string> Headers => this._headersDictionary;
 

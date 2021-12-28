@@ -9,7 +9,7 @@ namespace MobileApp.Configurations
     {
         public override bool UseBaseUrl => true;
 
-        public override string BaseUrl => @"https://localhost:15623/api/";
+        public override string BaseUrl => @"https://healthylife20211223154404.azurewebsites.net/api/";
 
         public override TimeSpan DefaultRequestCancellationTime { get; } = new TimeSpan(0, 0, 30);
     }

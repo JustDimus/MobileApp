@@ -14,7 +14,7 @@ namespace MobileApp.Library.DataManagement.Authorization.Implementation
     {
         private readonly IRequestManager _requestManager;
 
-        private AuthorizationStatuses lastAuthorizationStatus;
+        private AuthorizationStatuses lastAuthorizationStatus = AuthorizationStatuses.Undefined;
 
         private string lastUsedToken;
 
@@ -83,7 +83,7 @@ namespace MobileApp.Library.DataManagement.Authorization.Implementation
                 throw new ArgumentNullException(nameof(authorizationRequest));
             }
 
-            var result = await this._requestManager.SendRequestAsync<BaseResult<AuthorizationIdentifier>>(authorizationRequest);
+            var result = await this._requestManager.SendRequestAsync<string>(authorizationRequest);
 
             var authorizationStatus = result ? AuthorizationStatuses.Authorized : AuthorizationStatuses.Unauthorized;
             if (authorizationStatus != this.lastAuthorizationStatus)
@@ -95,7 +95,7 @@ namespace MobileApp.Library.DataManagement.Authorization.Implementation
 
             if (result)
             {
-                this.lastUsedToken = result.RawBodyResponse;
+                this.lastUsedToken = result.Result;
             }
 
             return AuthorizationStatuses.Unauthorized;

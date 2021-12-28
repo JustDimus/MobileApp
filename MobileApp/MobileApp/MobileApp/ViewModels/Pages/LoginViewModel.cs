@@ -154,6 +154,7 @@ namespace MobileApp.ViewModels.Pages
             {
                 case AuthorizationStatuses.Authorized:
                     this.authorizationCompleted = true;
+                    this.MoveToNextPage();
                     break;
                 case AuthorizationStatuses.Unauthorized:
                 case AuthorizationStatuses.Undefined:
@@ -161,8 +162,6 @@ namespace MobileApp.ViewModels.Pages
                     this.authorizationCompleted = false;
                     break;
             }
-
-            this.MoveToNextPage();
         }
     }
 }

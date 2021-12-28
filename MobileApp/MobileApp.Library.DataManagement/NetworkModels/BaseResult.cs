@@ -7,11 +7,11 @@ namespace MobileApp.Library.DataManagement.NetworkModels
 {
     internal class BaseResult<TEntity>
     {
-        [JsonProperty("Data")]
+        [JsonProperty("data")]
         public TEntity Result { get; set; }
-        [JsonProperty("Completed")]
+        [JsonProperty("completed")]
         public bool IsSuccessful { get; set; }
-        [JsonProperty("Message")]
+        [JsonProperty("message")]
         public string ResponseMessage { get; set; }
     }
 }

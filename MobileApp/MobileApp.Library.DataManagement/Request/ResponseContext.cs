@@ -33,11 +33,11 @@ namespace MobileApp.Library.DataManagement.Request
 
         public string RawBodyResponse { get; set; }
 
-        public static ResponseContext<TEntity> FromResult(TEntity entity)
+        public static ResponseContext<TEntity> FromResult(TEntity entity, bool status = true)
         {
             return new ResponseContext<TEntity>()
             {
-                IsSuccessful = true,
+                IsSuccessful = status,
                 Result = entity
             };
         }
